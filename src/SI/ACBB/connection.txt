@@ -1,0 +1,6 @@
+
+obda-sourceUri     : dbAcbbMapping
+obda-connectionUrl : jdbc:postgresql://127.0.0.1/acbb?sendBufferSize=5000
+obda-username      : ryahiaoui
+obda-password      : yahiaoui
+obda-driverClass   : org.postgresql.Driver

@@ -1,0 +1,15 @@
+
+   
+# VAR_PART_SQL 
+ 
+ localSiteName := ( '?localSiteName' ) { site_glacpe_sit.nom  & 63 } { nom  & 64, 67 } { site.nom & 57, 58, 59, 61, 60  }  PEEK 100 ;
+ 
+  -- The user will send for exemple : site = http://www.anaee-france.fr/ontology/anaee-france_ontology#GenevaLake
+ site := (  split_part('?site', '#', 2 ) ) { uri & 64 }  PEEK 100 ;
+ 
+ -- id :=  (?id )  {  mc.mchimie_id  & 1, 2, 200,201,202, 50,51,53, 55 } PEEK 10 ;
+ 
+ -- anaeeSiteName := ( '?anaeeSiteName' )  { nom  & 64, 67 }  PEEK 100 ;
+   
+ --   siteType := ( split_part('?siteType', '#', 2 ) ) { uri & 67 }  PEEK 100 ;
+

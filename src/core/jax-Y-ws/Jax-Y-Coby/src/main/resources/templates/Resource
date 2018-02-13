@@ -1,0 +1,17 @@
+
+package {PACKAGE_NAME} ;
+
+import com.rac021.jax.api.manager.IResource ;
+import com.rac021.jax.api.qualifiers.SqlQuery ;
+import com.rac021.jax.api.qualifiers.ResourceRegistry ;
+
+/**
+ *
+ * @author R.Yahiaoui
+ */
+@ResourceRegistry("{RESOURCE_CODE}")
+public class {CLASS_NAME} implements IResource {
+
+   {SQL_QUERY}
+    
+}

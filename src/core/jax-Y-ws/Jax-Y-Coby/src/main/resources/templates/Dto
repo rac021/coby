@@ -1,0 +1,25 @@
+
+package {PACKAGE_NAME} ;
+
+import java.io.Serializable ;
+import com.rac021.jax.api.manager.IDto ;
+import com.rac021.jax.api.qualifiers.RootDto ;
+import com.rac021.jax.api.qualifiers.ResultColumn ;
+import com.rac021.jax.api.qualifiers.security.Public ;
+
+/**
+ *
+ * @author R.Yahiaoui
+ */
+
+@RootDto
+public class {CLASS_NAME} implements IDto, Serializable {
+
+
+    {SQL_FIELD}
+    
+    {SQL_GETTER}
+
+    {SQL_SETTER} 
+    
+}

@@ -1,0 +1,9 @@
+[submodule "src/core/pipeline/java_projects/yedGen"]
+	path = src/core/pipeline/java_projects/yedGen
+	url = https://github.com/rac021/yedGen.git
+[submodule "src/core/pipeline/java_projects/CoreseInfer"]
+	path = src/core/pipeline/java_projects/CoreseInfer
+	url = https://github.com/rac021/CoreseInfer.git
+[submodule "src/core/pipeline/java_projects/ontop-matarializer"]
+	path = src/core/pipeline/java_projects/ontop-matarializer
+	url = https://github.com/rac021/ontop-matarializer.git

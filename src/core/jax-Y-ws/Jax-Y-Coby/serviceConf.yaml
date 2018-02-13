@@ -1,0 +1,129 @@
+
+#################################
+#################################
+### JAX-Y FILE CONFIGURATION ####
+#################################
+## Indentation is Important    ##
+## Note : Don't use Tabulation ##
+#################################
+
+
+############################################################################
+###### Mandatory Settings ##################################################
+############################################################################
+
+#########################################
+#########################################
+### DataBase ############################
+#########################################
+
+driverClassName : org.postgresql.Driver
+connectionUrl   : jdbc:postgresql://127.0.0.1/coby
+userName        : coby_user
+password        : coby_password
+
+
+############################################################################
+###### Optional Settings ###################################################
+############################################################################
+
+############################################
+###### Authentication ######################
+############################################
+## Mandatory for secured services 
+
+authentication : # using HTTP
+  type : customSignOn   
+  secured       :
+    vip_planes  : 
+      Accept    : [ Xml/Plain, Xml/Encrypted , Json/Plain , Json/Encrypted ]
+      Ciphers   : [ AES_128_CBC , AES_128_ECB , AES_256_CBC , AES_256_ECB ]
+  credentials   :  # used table for authentication 
+    tableName          : users
+    loginColumnName    : login
+    passwordColumnName : password -> MD5  # Default Storage : PLAIN
+  paramToSign : #   Ex : Signature = SHA2 ( login + MD5 ( password ) + timeStamp )
+    login     : PLAIN 
+    password  : MD5   # password hashed with MD5 in the signature of the request. Equal to the Hash used in passwordColumn
+    timeStamp : PLAIN
+  algoSign    : SHA2
+  validRequestTimeout : 5 # Request Validity in secondes ( Default : 30 )
+  
+#authentication  :
+#  type          : SSO 
+#  keycloakFile  : keyCloak/keyCloak.json ## keyCloak/keyCloak_https.json -> Path of the keyCloak file
+#  secured       :
+#    vip_planes  : 
+#      GET   : [ admin ]
+#      POST  : [ admin ]
+
+
+############################################
+##### Technical Settings ###################
+############################################
+
+#################################
+#################################
+### SERVER ######################
+#################################
+
+IP         : localhost 
+HTTP_PORT  : 8080      
+HTTPS_PORT : 8443      
+TRANSPORT  : HTTP  # HTTPS 
+SELF_SSL   : TRUE  # FALSE 
+
+#################################
+############ SSL ################
+#### IF NONE_SELF_SSL MODE ######
+#################################
+#################################
+
+## Ex of Generating a Certificate using JDK 
+##   keytool -genkey -v 
+##  -keystore my-release-key.keystore 
+##  -alias alias_name 
+##  -keyalg RSA 
+##  -keysize 2048 
+##  -validity 10000 
+##  -ext SAN=DNS:localhost,IP:127.0.0.1        
+
+KEY_STORE_PATH     :  /opt/jdk/jdk1.8.0_111/jre/bin/my-release-key.keystore
+KEY_STORE_PASSWORD :  yahiaoui
+KEY_PASSWORD       :  yahiaoui
+ALIAS              :  alias_name 
+
+#################################
+#################################
+############ Streamer  ##########
+#################################
+
+# Numbers concurent users
+MaxConcurrentUsers : 2
+
+# ThreadPoolSize - Application Scope
+ThreadPoolSize     : 16
+
+# Extraction DataBase Size = Ratio * RecorderLenght
+Ratio              : 1 
+
+# Nb Data in Memory before flush # Send
+ResponseCacheSize  : 1000 
+
+# Size of the Queue - SelectSize
+SelectSize         : 5000
+
+##################################################
+##################################################
+### Admin App Server.                       ######
+### Location http://localhost:port/console/ ######
+## Management Interface : http://localhost:9990 ##
+##################################################
+### Optional
+
+admin_login    : admin
+admin_password : admin
+
+##################################################
+##################################################
+

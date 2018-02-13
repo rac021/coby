@@ -1,0 +1,48 @@
+  
+
+# VAR_PART_CSV  
+  
+  standard          := 0
+   
+  category          := 5
+   
+  unit              := 12 
+   
+  localVariableName := 11
+   
+# VAR_PART_SQL 
+
+  localSiteName := ( '?localSiteName' ) { site.nom & 1 }  PEEK 100 ;
+ 
+  year          :=  ( '?year' ) { EXTRACT( YEAR FROM temp.date::date ) & 56 }  STEP 50 ; 
+ 
+# VAR_PART_SEMANTIC 
+ 
+  anaeeSiteName     := ?anaeeSiteName
+ 
+  siteTypeName      := ?siteTypeName
+
+  anaeeUnitName     := ?anaeeUnitName
+
+  category          := ?category
+
+  categoryName      := ?categoryName
+  
+  variable          := ?variable
+
+  unit              := ?unit
+
+  localVariableName := ?localVariableName
+
+  anaeeVariableName := ?anaeeVariableName
+
+  site              := ?site
+
+  infraName         := ?infraName
+
+  year              := ?year
+
+
+
+
+

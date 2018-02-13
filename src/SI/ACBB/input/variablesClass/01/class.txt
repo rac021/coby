@@ -1,0 +1,2 @@
+CLASS   =  Flux tours
+COLUMN  =  12

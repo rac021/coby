@@ -1,0 +1,2 @@
+CLASS   =  Météorologie semi-horaire
+COLUMN  =  12
