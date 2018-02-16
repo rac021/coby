@@ -1,8 +1,37 @@
 #!/bin/bash
 
  # The Characters : $ @ ^ ` " are not authorized in this script 
- 
+
     set -e 
+ 
+    EXIT() {
+     parent_script=`ps -ocommand= -p $PPID | awk -F/ '{print $NF}' | awk '{print $1}'`
+     if [ $parent_script = "bash" ] ; then
+         echo; echo -e " \e[90m exited by : $0 \e[39m " ; echo
+         exit 2
+     else
+         if [ $parent_script != "java" ] ; then 
+            echo ; echo -e " \e[90m exited by : $0 \e[39m " ; echo
+            kill -9 `ps --pid $$ -oppid=`;
+            exit 2
+         fi
+         echo " Coby Exited "
+         exit 2
+     fi
+    } 
+    
+    while [[ "$#" > "0" ]] ; do
+     case $1 in       
+         help )  echo
+                 echo " Total Arguments : Two                    "
+                 echo 
+                 echo "   \$1 [ LOGIN ] :  The login of the user "
+                 echo "   \$2 [ QUERY ] :  the Query             "
+                 echo
+                 EXIT ;
+     esac
+     shift
+    done   
  
     SCRIPT_PATH="../scripts"
 
@@ -58,14 +87,23 @@
     ###                            ###
     ##################################
 
-    QUERY="$1"
+    if [[ "$#" < 2 ]] ; then
+        echo 
+        echo " Two ARGS are required : "
+        echo '   -> ( $1 : LOGIN ) & ( $2 : QUERY       ) '
+        echo '   -> ( $1 : -i    ) & ( $2 : db=postgres ) '
+        echo '   -> ( $1 : -i    ) & ( $2 : db=mysql    ) '
+        EXIT
+    fi
+
+    LOGIN="$1"
+    QUERY="$2"
     
     # Escape some special Characters  
     QUERY=${QUERY//[\'\"\`\$\^\@]}  
 
     # Trim
-    QUERY=` echo -n "$QUERY" | sed 's/^ *//;s/ *$// ' `
-    
+    QUERY=` echo -n "$QUERY" | sed 's/^ *//;s/ *$// ' `    
 
     echo 
     echo " 00 ============================ 00 "
@@ -96,8 +134,8 @@
 
     RESERVED_PARAMETERS_WORDS="CLASS , SI, CSV, SELECT_VARS"
 
-    OUTPUT_ROOT="DOI"
-  
+    TOKEN=`date +%d_%m_%Y__%H_%M_%S`    
+    OUTPUT_ROOT="../DOI/$LOGIN/$TOKEN"  
 
     SI_PATH="SI" 
    
@@ -192,23 +230,6 @@
     ROOT_PATH="${CURRENT_PATH/}"
     PARENT_DIR="$(dirname "$ROOT_PATH")"
 
-     
-    EXIT() {
-     parent_script=`ps -ocommand= -p $PPID | awk -F/ '{print $NF}' | awk '{print $1}'`
-     if [ $parent_script = "bash" ] ; then
-         echo; echo -e " \e[90m exited by : $0 \e[39m " ; echo
-         exit 2
-     else
-         if [ $parent_script != "java" ] ; then 
-            echo ; echo -e " \e[90m exited by : $0 \e[39m " ; echo
-            kill -9 `ps --pid $$ -oppid=`;
-            exit 2
-         fi
-         echo " Coby Exited "
-         exit 2
-     fi
-    } 
-    
     TO_ARRAY() { 
         LINE=$1
         DELIMITER=$2
@@ -265,8 +286,7 @@
         fi 
         done
         IFS=$OIFS
-    }
-                          
+    }                          
     
     CALL_COBY() { 
        
@@ -373,8 +393,6 @@
   
     $SCRIPT_PATH/utils/check_commands.sh java curl psql-mysql mvn awk gawk
     
-    OUTPUT_ROOT=` readlink -f "$OUTPUT_ROOT" `
-
     if [[ ! -d  "$OUTPUT_ROOT"  ]] ; then
       mkdir -p "$OUTPUT_ROOT" 
     else 
@@ -382,6 +400,8 @@
       rm -rf $OUTPUT_ROOT/*
     fi
 
+    OUTPUT_ROOT=` readlink -f "$OUTPUT_ROOT" `
+    
     QUERY=${QUERY//&/ $DELIMITER_AT }
     QUERY=${QUERY//=/ $DELIMITER_DDOT_EQ }
     
