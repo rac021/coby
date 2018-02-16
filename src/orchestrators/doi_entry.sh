@@ -103,7 +103,6 @@
    
     if [[ ! -d  "SI" ]] ; then
         SI_PATH="../SI" ;
-        OUTPUT_ROOT="../DOI"
     fi
 
     FILE_BINDER="$SI_PATH/SI.txt"
