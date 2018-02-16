@@ -53,8 +53,15 @@
                                                 owl="$ONTOLOGY"                         \
                                                 columns="$COLUMNS_TO_VALIDATE"          \
                                                 -enable_full_uri 
-   fi 
-  
+                                               
+     if [ ! -f "$VALIDATED_CSV_FILE_WITH_FULL_URI" ] ; then
+        echo
+        echo " Errors were detected in the validation of the csv files "
+        echo
+        exit 
+     fi
+     
+   fi  
  
  done 
  
@@ -71,6 +78,4 @@
  fi
  
  taskset -cp $LIST_CPU $PID
- 
- 
  
