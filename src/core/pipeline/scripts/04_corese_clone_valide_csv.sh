@@ -168,7 +168,7 @@
      EXIT
   fi 
  
-  if [ ! -f "$OUt" ] ; then 
+  if [ ! -f "$OUT" ] ; then 
    echo -e "\e[36m No Valide CSV File Generated at $OUT \e[39m "
    EXIT
   fi 
@@ -176,6 +176,3 @@
   echo 
   echo -e "\e[36m Valide CSV Generated at : $OUT \e[39m "
   echo
-
-
-
