@@ -134,13 +134,13 @@
   sleep 1
   tput setaf 7
   
-  if [ ! -f $OWL ] ; then
+  if [ ! -f "$OWL" ] ; then
      echo -e "\e[91m Missing OWL File [[ $OWL ]] ! \e[39m "
      EXIT
   fi
 
     
-  if [ ! -f $PREFIX ] ; then
+  if [ ! -f "$PREFIX" ] ; then
      echo -e "\e[91m Missing PREFIX File [[ $PREFIX ]] ! \e[39m "
      EXIT
   fi
@@ -168,7 +168,7 @@
      EXIT
   fi 
  
-  if [ ! -f $OUt ] ; then 
+  if [ ! -f "$OUt" ] ; then 
    echo -e "\e[36m No Valide CSV File Generated at $OUT \e[39m "
    EXIT
   fi 
