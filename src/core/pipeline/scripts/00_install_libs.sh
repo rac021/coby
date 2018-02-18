@@ -38,6 +38,7 @@
  
  CURRENT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
  cd $CURRENT_PATH
+ 
  CURRENT_DIRECTORY="scripts"
  ROOT_PATH="${CURRENT_PATH/'/'$CURRENT_DIRECTORY/''}" 
 
