@@ -9,6 +9,8 @@
     CURRENT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
     cd $CURRENT_PATH
     
+    SEMANTIC_EXTRACTION_FORLDER="../DOI"
+    
     ################################################################
     # Arbo SI Configuration Ex
     ################################################################
@@ -138,7 +140,7 @@
     RESERVED_PARAMETERS_WORDS="CLASS , SI, CSV, SELECT_VARS"
 
     TOKEN=`date +%d_%m_%Y__%H_%M_%S`    
-    OUTPUT_ROOT="../DOI/$LOGIN/$TOKEN"  
+    OUTPUT_ROOT="$SEMANTIC_EXTRACTION_FORLDER/$LOGIN/$TOKEN"  
 
     SI_PATH="SI" 
    
