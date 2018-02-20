@@ -1,5 +1,5 @@
 
-package com.rac021.jaxy.coby.service.cancel.all ;
+package com.rac021.jaxy.coby.service.time ;
 
 /**
  *
@@ -14,7 +14,7 @@ import com.rac021.jax.api.qualifiers.ResourceRegistry ;
  *
  * @author R.Yahiaoui
  */
-@ResourceRegistry("CobyCancelAllResource")
+@ResourceRegistry("TimeResource")
 public class CobyResource implements IResource {
 
    @SqlQuery(value = "Sql_Log")

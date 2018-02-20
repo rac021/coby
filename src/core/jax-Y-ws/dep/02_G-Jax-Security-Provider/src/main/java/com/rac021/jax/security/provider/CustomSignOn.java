@@ -211,8 +211,8 @@ public class CustomSignOn implements ISignOn {
             String calculatedSign =  Digestor.toString( Digestor.toSHA1( login        + 
                                                                          password     + 
                                                                          timeStamp )) ;
-            if(calculatedSign.equals(_clientSign)) {
-                 ISignOn.ENCRYPTION_KEY.set(password) ;
+            if(calculatedSign.equals(_clientSign))   {
+                ISignOn.ENCRYPTION_KEY.set(password) ;
                 return true ; 
             }
            }

@@ -4,7 +4,7 @@
   
   standard          := 0
    
-  category          := 5
+  category          := 1
    
   unit              := 12 
    

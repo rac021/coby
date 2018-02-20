@@ -9,6 +9,7 @@
  PARENT_DIR="$(dirname "$ROOT_PATH")"
     
  EXIT() {
+   if [ $PPID = 0 ] ; then exit ; fi
    parent_script=`ps -ocommand= -p $PPID | awk -F/ '{print $NF}' | awk '{print $1}'`
    if [ $parent_script = "bash" ] ; then
        echo; echo -e " \e[90m exited by : $0 \e[39m " ; echo

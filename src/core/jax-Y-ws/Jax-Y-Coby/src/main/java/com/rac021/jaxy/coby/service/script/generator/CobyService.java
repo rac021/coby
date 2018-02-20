@@ -151,6 +151,16 @@ public class CobyService    {
                 "                    ;;                                \n"     +
                 "               esac	                               \n"     +
                 "     esac                                             \n"     +
+                " help)  echo                                                                                        \n" +
+                "        echo \" Total Arguments : Five                                                            \"\n" +
+                "        echo                                                                                        \n" +
+                "        echo \"   host       :  Hostname. Ex : hostname=http://147.99.222.28:8181/rest/resources  \"\n" +
+                "        echo \"   login=     :  Login of the user. Ex : login=admin                               \"\n" +
+                "        echo \"   password=  :  Passwoord of the user. Ex : password=admin                        \"\n" +
+                "        echo \"   service=   :  service name. Ex : service=InfoService                            \"\n" +
+                "        echo \"   params=    :  Prams passed to the service. Ex :  params=SI = SOERE OLA          \"\n" +
+                "        echo                                                                                        \n" +
+                "        exit ;                                                                                        " +
                 "     shift                                            \n"     +
                 "  done                                              \n\n"     +
                 " Host=${Host:-\""+_url+"\"}                           \n"     +

@@ -3,7 +3,7 @@ package com.rac021.jaxy.coby.service.semantic ;
 
 import java.util.Set ;
 import javax.xml.bind.annotation.XmlType ;
-import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElement ;
 import javax.xml.bind.annotation.XmlRootElement ;
 
 /**

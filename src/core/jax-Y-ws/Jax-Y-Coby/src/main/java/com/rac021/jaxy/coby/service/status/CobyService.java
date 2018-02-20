@@ -15,10 +15,10 @@ import javax.ws.rs.core.Context ;
 import javax.ws.rs.core.Response ;
 import javax.annotation.PostConstruct ;
 import com.rac021.jax.api.crypto.CipherTypes ;
-import com.rac021.jax.api.qualifiers.ResourceRegistry;
 import com.rac021.jax.api.qualifiers.security.Policy ;
 import com.rac021.jax.api.qualifiers.security.Cipher ;
 import com.rac021.jax.api.qualifiers.ServiceRegistry ;
+import com.rac021.jax.api.qualifiers.ResourceRegistry ;
 import com.rac021.jax.api.qualifiers.security.Secured ;
 import static com.rac021.jaxy.coby.scheduler.COBYScheduler.executorService ;
 

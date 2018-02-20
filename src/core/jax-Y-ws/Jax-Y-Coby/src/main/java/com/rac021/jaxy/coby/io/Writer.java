@@ -7,9 +7,12 @@ import java.nio.file.Path ;
 import java.io.IOException ;
 import java.nio.file.Paths ;
 import java.nio.file.Files ;
+import java.util.Comparator ;
 import java.nio.file.LinkOption ;
+import java.nio.file.FileVisitOption ;
 import java.nio.file.StandardOpenOption ;
 import java.nio.charset.StandardCharsets ;
+import com.rac021.jax.api.exceptions.BusinessException ;
 
 /**
  *
@@ -36,6 +39,20 @@ public class Writer {
      
     public static String getFileWithoutExtension( String fileName ) {      
          return fileName.replaceFirst("[.][^.]+$", "") ;
+    }
+
+    public static boolean isFullStack(int size ) {
+        return size >= 50 ;
+    }
+
+    public static long getTotalDirectories( String path ) throws IOException {
+       
+     if( ! existFile( path) ) return 0 ;
+        
+     long total = Files.find ( Paths.get( path ),  1 ,  // profondeur
+                  ( p, attributes ) -> attributes.isDirectory() ).count() - 1 ; 
+     // -1 because path is also counted in
+     return total ;
     }
       
     public List<String> readTextFile(String fileName) throws IOException {
@@ -65,18 +82,18 @@ public class Writer {
     }
 
     public static boolean existFile( String path ) {
-      
-     if( path == null ) return false ;
-     Path pat = Paths.get( path )    ;
-     return Files.exists( pat, new LinkOption[]{ LinkOption.NOFOLLOW_LINKS}) ;
         
+        if( path == null ) return false ;
+        Path pat = Paths.get( path )    ;
+        return  Files.exists( pat  ,
+                              new LinkOption[]{ LinkOption.NOFOLLOW_LINKS}) ;
     }
     
     public static void checkDirectory( String directory ) throws IOException {
       
      Path path = Paths.get(directory) ;
      if(!Files.exists(path, new LinkOption[]{ LinkOption.NOFOLLOW_LINKS}))
-       Files.createDirectory(path) ;
+       Files.createDirectory( path )  ;
     }
     
     public static void deleteFile( String path ) throws IOException {
@@ -87,5 +104,27 @@ public class Writer {
     public static void createFile( String path ) throws IOException {
         File file = new File(path) ;
         file.createNewFile()       ;
+    }
+                     
+    public static boolean isEmptyFolder(String outputDataFolder) throws BusinessException {
+       File file = new File(outputDataFolder) ;
+       if(file.isDirectory()){
+         return file.list().length == 0 ;
+       } else {
+           throw new BusinessException("\n [ + " + outputDataFolder + " ] is not a valid Directory \n ") ;
+       } 
+    }
+    
+    public static void removeDirectory(String directory) throws Exception {
+     
+      Path rootPath = Paths.get(directory);
+      Files.walk(rootPath, FileVisitOption.FOLLOW_LINKS)
+           .sorted(Comparator.reverseOrder())
+           .map(Path::toFile)
+           .forEach(File::delete) ;
+      
+     if ( ! Files.exists(Paths.get(directory) , 
+          new LinkOption[]{ LinkOption.NOFOLLOW_LINKS}) )
+      Files.createDirectory(Paths.get(directory))       ;   
     }
 }

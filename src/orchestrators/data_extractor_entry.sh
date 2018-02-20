@@ -1,16 +1,14 @@
 #!/bin/bash
 
  # The Characters : $ @ ^ ` " are not authorized in this script 
-
+ 
     set -e 
  
     SCRIPT_PATH="../scripts"
-      
+
     CURRENT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
     cd $CURRENT_PATH
-    
-    SEMANTIC_EXTRACTION_FORLDER="../DOI"
-    
+
     ################################################################
     # Arbo SI Configuration Ex
     ################################################################
@@ -54,45 +52,20 @@
    ##############################################################################################
    ##############################################################################################   
    
-    EXIT() {
-     parent_script=`ps -ocommand= -p $PPID | awk -F/ '{print $NF}' | awk '{print $1}'`
-     if [ $parent_script = "bash" ] ; then
-         echo; echo -e " \e[90m exited by : $0 \e[39m " ; echo
-         exit 2
-     else
-         if [ $parent_script != "java" ] ; then 
-            echo ; echo -e " \e[90m exited by : $0 \e[39m " ; echo
-            kill -9 `ps --pid $$ -oppid=`;
-            exit 2
-         fi
-         echo " Coby Exited "
-         exit 2
-     fi
-    } 
-
-    if [ $# = 0 -o "$1" = "help"  ] ; then
-        echo 
-        echo "  Two ARGS required :                       "
-        echo '   -> ( $1 : LOGIN ) & ( $2 : QUERY       ) '
-        echo '   -> ( $1 : -i    ) & ( $2 : db=postgres ) '
-        echo '   -> ( $1 : -i    ) & ( $2 : db=mysql    ) '
-        EXIT
-    fi   
- 
- 
-    if [ $# = 1 ] &&  [ "$1" = "-i" ] ; then
-        echo 
-        echo "  Two ARGS required for installation :      "
-        echo '   -> ( $1 : -i    ) & ( $2 : db=postgres ) '
-        echo '   -> ( $1 : -i    ) & ( $2 : db=mysql    ) '
-        EXIT
-    fi  
-   
     ##################################
     ###                            ###
     ### CONFIGURATION ################
     ###                            ###
     ##################################
+
+    QUERY="$1"
+    
+    # Escape some special Characters  
+    QUERY=${QUERY//[\'\"\`\$\^\@]}  
+
+    # Trim
+    QUERY=` echo -n "$QUERY" | sed 's/^ *//;s/ *$// ' `
+    
 
     echo 
     echo " 00 ============================ 00 "
@@ -112,26 +85,10 @@
     echo
     
     if [ "$1" == "-i" ] ;  then 
-    
-       echo "  COBY INSTALATION ...  " 
-       QUERY="$2" 
-       
+       echo "    COBY INSTALATION ..." ; echo 
     else 
-    
-       LOGIN="$1"
-       QUERY="$2"
-    
-       # Escape some special Characters  
-       QUERY=${QUERY//[\'\"\`\$\^\@]}  
-
-       # Trim
-       QUERY=` echo -n "$QUERY" | sed 's/^ *//;s/ *$// ' `    
-
-       echo "  LOGIN : $LOGIN  "
-       echo "  QUERY : $QUERY  "  
-
+       echo " $QUERY "  
     fi
-    
     echo 
     echo " ################################## "
     
@@ -139,13 +96,14 @@
 
     RESERVED_PARAMETERS_WORDS="CLASS , SI, CSV, SELECT_VARS"
 
-    TOKEN=`date +%d_%m_%Y__%H_%M_%S`    
-    OUTPUT_ROOT="$SEMANTIC_EXTRACTION_FORLDER/$LOGIN/$TOKEN"  
+    OUTPUT_ROOT="DOI"
+  
 
     SI_PATH="SI" 
    
     if [[ ! -d  "SI" ]] ; then
         SI_PATH="../SI" ;
+        OUTPUT_ROOT="../DOI"
     fi
 
     FILE_BINDER="$SI_PATH/SI.txt"
@@ -235,6 +193,24 @@
     ROOT_PATH="${CURRENT_PATH/}"
     PARENT_DIR="$(dirname "$ROOT_PATH")"
 
+     
+    EXIT() {
+     if [  $PPID = 0  ] ; then exit  ; fi
+     parent_script=`ps -ocommand= -p $PPID | awk -F/ '{print $NF}' | awk '{print $1}'`
+     if [ $parent_script = "bash" ] ; then
+         echo; echo -e " \e[90m exited by : $0 \e[39m " ; echo
+         exit 2
+     else
+         if [ $parent_script != "java" ] ; then 
+            echo ; echo -e " \e[90m exited by : $0 \e[39m " ; echo
+            kill -9 `ps --pid $$ -oppid=`;
+            exit 2
+         fi
+         echo " Coby Exited "
+         exit 2
+     fi
+    } 
+    
     TO_ARRAY() { 
         LINE=$1
         DELIMITER=$2
@@ -261,7 +237,8 @@
         fi 
         done < $FILE
         IFS=$OIFS
-    }    
+    }
+    
     
     EXTRACT_VALUES_FROM_LINE() { 
         OIFS=$IFS
@@ -272,7 +249,8 @@
                                 | sed -e 's/^.*'$key' *'$DELIMITER_DDOT_EQ'//' | sed -e 's/'$DELIMITER_AT'//'                       \
                                 | sed 's/  */ /g' `
         IFS=$OIFS
-    }    
+    }
+    
     
     GET_SELECTED_SI() { 
         VALUES=$1
@@ -289,7 +267,8 @@
         fi 
         done
         IFS=$OIFS
-    }                          
+    }
+                          
     
     CALL_COBY() { 
        
@@ -297,8 +276,7 @@
         ##  INSTALLATION  ################################
         ##################################################
         
-        if [ "$#" -ne 2 -a "$1" = "-i" ] ; then 
-        
+        if [ "$#" -ne 2 -a "$1" == "-i" ] ; then 
             echo
             echo "  -> The arg [ -i ] is used only for installation. Cmd Ex : "$0" -i db=postgresql "
             EXIT
@@ -385,7 +363,7 @@
     ## COBY ORCHESTRATOR ##
     #######################
     
-    if [[ "$1" == "-i" ]] ; then 
+    if [[ "$QUERY" == "-i" ]] ; then 
        CALL_COBY "$1" "$2"   
        EXIT
     elif [[ -z "$QUERY"  ]] ; then
@@ -397,6 +375,8 @@
   
     $SCRIPT_PATH/utils/check_commands.sh java curl psql-mysql mvn awk gawk
     
+    OUTPUT_ROOT=` readlink -f "$OUTPUT_ROOT" `
+
     if [[ ! -d  "$OUTPUT_ROOT"  ]] ; then
       mkdir -p "$OUTPUT_ROOT" 
     else 
@@ -404,8 +384,6 @@
       rm -rf $OUTPUT_ROOT/*
     fi
 
-    OUTPUT_ROOT=` readlink -f "$OUTPUT_ROOT" `
-    
     QUERY=${QUERY//&/ $DELIMITER_AT }
     QUERY=${QUERY//=/ $DELIMITER_DDOT_EQ }
     
@@ -420,15 +398,12 @@
     GET_SELECTED_SI "$RESULT" "$FILE_BINDER"
 
     if [[ -z "${SELECTED_SI[@]}" ]] ; then
-    
       echo " No SI detected ! Path -> [${SELECTED_SI[@]}] "
       echo " The process will EXIT "
       EXIT
-      
     fi
     
     for si in "${SELECTED_SI[@]}" ; do
-    
        tput setaf 2
        echo
        echo -e " ############################## "
@@ -439,6 +414,5 @@
        sleep 1      
        echo 
        CALL_COBY "$si" "$CLASS_VALUES" "$QUERY"
-       
     done
     

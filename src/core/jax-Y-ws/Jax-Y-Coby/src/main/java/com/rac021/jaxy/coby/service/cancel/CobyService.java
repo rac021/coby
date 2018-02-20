@@ -15,11 +15,14 @@ import javax.ws.rs.core.Context ;
 import javax.ws.rs.core.Response ;
 import javax.annotation.PostConstruct ;
 import com.rac021.jax.api.crypto.CipherTypes ;
+import com.rac021.jaxy.coby.checker.TokenManager ;
+import com.rac021.jaxy.coby.scheduler.COBYScheduler ;
 import com.rac021.jax.api.qualifiers.security.Policy ;
 import com.rac021.jax.api.qualifiers.security.Cipher ;
 import com.rac021.jax.api.qualifiers.ServiceRegistry ;
 import com.rac021.jax.api.qualifiers.security.Secured ;
 import com.rac021.jax.api.qualifiers.ResourceRegistry ;
+import com.rac021.jax.api.exceptions.BusinessException ;
 import static com.rac021.jaxy.coby.scheduler.PipelineRunner.process ;
 import static com.rac021.jaxy.coby.scheduler.COBYScheduler.SUBMITTED_JOB ;
 
@@ -47,24 +50,43 @@ public class CobyService    {
     
     @GET
     @Produces( {  "xml/plain" , "json/plain" , "json/encrypted" , "xml/encrypted"  } )
-    public Response cancel ( @HeaderParam("keep") String filterdIndex, 
-                             @Context UriInfo uriInfo ) {    
+    public Response cancel ( @HeaderParam("API-key-Token") String token ,
+                             @HeaderParam("keep") String filterdIndex   , 
+                             @Context UriInfo uriInfo ) throws BusinessException     {    
          
         //executorService.shutdownNow() ;
         
-        if( SUBMITTED_JOB != null )   {
+        if( COBYScheduler.jobOwner == null ) {
             
-           SUBMITTED_JOB.cancel(true) ;
-           process.destroyForcibly()  ;
            return Response.status(Response.Status.OK)
-                          .entity("\n All Jobs Canceled .. \n" )
+                          .entity("\n No Job submited to Cancel \n" )
                           .build() ;
         }
-        return Response.status(Response.Status.OK)
-                       .entity("\n No Job submited to Cancel \n" )
-                       .build() ;
+        
+        String login     = TokenManager.getLogin(token) ;
+        
+        if( COBYScheduler.jobOwner.equals(login )) {
+        
+            if( SUBMITTED_JOB != null )   {
+
+               SUBMITTED_JOB.cancel(true) ;
+               process.destroyForcibly()  ;
+               return Response.status(Response.Status.OK)
+                              .entity("\n Current Job Canceled .. \n" )
+                              .build() ;
+            } else {
+                
+                return Response.status(Response.Status.OK)
+                          .entity("\n No Job submited to Cancel \n" )
+                          .build() ;
+            }
+        }
+        else {
+            
+            return Response.status(Response.Status.OK)
+                           .entity("\n [" + login + "] does not have permissions \n"
+                                   + "  -> Current JobOwner : " + COBYScheduler.jobOwner )
+                           .build() ;
+        }
     }
-    
-
 }
-

@@ -1,8 +1,7 @@
 
 
-package com.rac021.jaxy.coby.scheduler;
+package com.rac021.jaxy.coby.scheduler ;
 
-import java.io.File ;
 import java.util.List ;
 import javax.ejb.Startup ;
 import javax.ejb.Schedule ;
@@ -16,7 +15,7 @@ import javax.annotation.PostConstruct ;
 import com.rac021.jaxy.coby.io.Writer ;
 import java.util.concurrent.ThreadPoolExecutor ;
 import java.util.concurrent.LinkedBlockingQueue ;
-import com.rac021.jax.api.exceptions.BusinessException ;
+import com.rac021.jaxy.coby.checker.TokenManager ;
 import com.rac021.jaxy.coby.service.configuration.CobyConfiguration ;
 
 /**
@@ -30,63 +29,69 @@ import com.rac021.jaxy.coby.service.configuration.CobyConfiguration ;
 public class COBYScheduler {
     
     @Inject 
-    CobyConfiguration configuration ;
+    CobyConfiguration configuration       ;
     
-    public static final ThreadPoolExecutor executorService = new ThreadPoolExecutor(1, 1, 60L, TimeUnit.SECONDS, new LinkedBlockingQueue(1));
-       
-    public static  List<String> JOBS  ; 
+    public static int MAX_EXTRACTIONS = 1 ;
+    
+    public static final ThreadPoolExecutor executorService = new ThreadPoolExecutor( 1                            , 
+                                                                                     1                            , 
+                                                                                     60L                          , 
+                                                                                     TimeUnit.SECONDS             , 
+                                                                                     new LinkedBlockingQueue(1) ) ;
+    public static  List<String>   JOBS                       ; 
    
-    public static Future<Integer> SUBMITTED_JOB ;
+    public static Future<Integer> SUBMITTED_JOB              ;
     
+    public static String          jobOwner  =  null          ;
+
     @PostConstruct
     public void method() {
-        JOBS = new ArrayList<>() ;
-        System.out.println(" Wating for process ") ;
+        JOBS = new ArrayList<>()                                     ;
+        MAX_EXTRACTIONS = configuration.getTotalExtractionsPerUser() ;
+        System.out.println(" Wating for process ")                   ;
         System.out.println(" Interval time -> " +  configuration.getFrequencyUpdateTimeMs() + " ( ms ) ") ;
+        System.out.println(" Total Extraction per User -> " +  MAX_EXTRACTIONS                          ) ;
     }
     
     @Schedule(persistent = false, second = "*/5", minute = "*", hour = "*", info = " Coby Jobs Processor " )  
-    public void popQuery() {
+    public void popQuery() throws Exception {
         
-       if( ! Writer.existFile( configuration.getCobyPipeline() ) ) {
+       if( ! Writer.existFile( configuration.getCobyPipelineScript()) )      {
            
            System.out.println(" The Script [" + 
-                  configuration.getCobyPipeline() + "] + Not found ! ") ;
-           
+                  configuration.getCobyPipelineScript()+ "] + Not found ! ") ;
        }
-       else if (  executorService.getActiveCount() == 0 ) {
        
-         try {
-             
-            if ( isEmptyFolder( configuration.getOutputDataFolder())) {
+       else if( ! JOBS.isEmpty() )   {
          
-                if( ! JOBS.isEmpty() ) {
+             if ( executorService.getActiveCount() == 0 )  {
        
-                     String query = JOBS.get(0) ;
-                     JOBS.remove(0)             ;
+                   String query = JOBS.get(0)                     ;
 
-                     SUBMITTED_JOB = executorService.submit(new PipelineRunner( configuration.getCobyPipeline() , 
-                                                                                query         , 
-                                                                                configuration. getLoggerFile()   , 
-                                                                                configuration.getFrequencyUpdateTimeMs() ) ) ;
-                     /* Wait for processing */
-                     SUBMITTED_JOB.get() ;
-                 } 
-              }
-         }  catch (Exception ex) {
-              System.err.println(" Job Canceled ... " + ex.getMessage() ) ;
-         } 
+                   String login =  TokenManager.getLogin( query ) ;
+
+                   if ( Writer.getTotalDirectories( TokenManager.buildOutputFolder( configuration.getOutputDataFolder() , 
+                                                                                    login )  )  < MAX_EXTRACTIONS )     {
+                        JOBS.remove(0)                                                                                                     ;
+                        
+                        jobOwner = login                                                                                                   ;
+                        
+                        SUBMITTED_JOB = executorService.submit(new PipelineRunner( configuration.getCobyPipelineScript()                   , 
+                                                                                   query                                                   , 
+                                                                                   TokenManager.builPathLog( configuration.getLoggerFile() , 
+                                                                                                             login ) ,
+                                                                                   configuration.getFrequencyUpdateTimeMs() )           )  ;
+                        /* Wait for processing */
+                        SUBMITTED_JOB.get() ;
+                        jobOwner  =   null  ;
+                   }
+                   else if ( query != null ) {
+                       /* Rotate Job */
+                       JOBS.remove(0)        ;
+                       JOBS.add( query )     ;
+                   }
+             }
        }
-       
-    }
-                    
-    public static boolean isEmptyFolder(String outputDataFolder) throws BusinessException {
-       File file = new File(outputDataFolder) ;
-       if(file.isDirectory()){
-         return file.list().length == 0 ;
-       } else {
-           throw new BusinessException("\n [ + " + outputDataFolder + " ] is not a valid Directory \n ") ;
-       } 
     }
     
 }

@@ -330,7 +330,9 @@ public class Main {
        deployment.addPackage("com.rac021.jaxy.override.configuration")  ;
               
        deployment.addPackage("com.rac021.jaxy.coby.io")                       ;
+       deployment.addPackage("com.rac021.jaxy.coby.checker")                  ;
        deployment.addPackage("com.rac021.jaxy.coby.scheduler")                ;
+       deployment.addPackage("com.rac021.jaxy.coby.service.time")             ;
        deployment.addPackage("com.rac021.jaxy.coby.service.jobs")             ;
        deployment.addPackage("com.rac021.jaxy.coby.service.logs")             ;
        deployment.addPackage("com.rac021.jaxy.coby.service.cancel")           ;

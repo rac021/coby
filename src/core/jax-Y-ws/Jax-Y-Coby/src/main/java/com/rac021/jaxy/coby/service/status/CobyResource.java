@@ -1,5 +1,5 @@
 
-package com.rac021.jaxy.coby.service.status;
+package com.rac021.jaxy.coby.service.status ;
 
 /**
  *

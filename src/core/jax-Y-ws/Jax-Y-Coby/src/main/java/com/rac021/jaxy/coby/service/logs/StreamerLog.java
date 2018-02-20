@@ -2,25 +2,23 @@
 package com.rac021.jaxy.coby.service.logs ;
 
 import java.io.Writer ;
+import java.time.ZoneId ;
+import java.util.Locale ;
 import java.io.IOException ;
 import java.io.OutputStream ;
+import java.io.BufferedWriter ;
+import java.time.ZonedDateTime ;
 import java.util.logging.Level ;
 import java.util.logging.Logger ;
 import java.io.OutputStreamWriter ;
+import java.time.format.FormatStyle ;
+import java.util.concurrent.TimeUnit ;
+import java.util.concurrent.Executors ;
+import javax.ws.rs.core.StreamingOutput ;
+import java.time.format.DateTimeFormatter ;
+import java.util.concurrent.ExecutorService ;
 import com.rac021.jax.api.exceptions.BusinessException ;
-import com.rac021.jax.api.streamers.StreamerOutputJsonEncrypted;
-import javax.ws.rs.core.StreamingOutput;
-
-
-import java.io.BufferedWriter;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.Locale;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import com.rac021.jax.api.streamers.StreamerOutputJsonEncrypted ;
 
 /**
  *
@@ -29,25 +27,27 @@ import java.util.concurrent.TimeUnit;
 
 public class StreamerLog  implements StreamingOutput {
 
-    final long timeOunt = 10000 ; // ( ms) 60 seconds
+    final long     timeOunt    = 10000 ; // ( ms) 10 seconds
    
-    final DateTimeFormatter patternDateFr = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL)
-                                                             .withLocale(Locale.FRANCE)           ;
+    final ZoneId   frZoneId    = ZoneId.of("Europe/Paris") ;
     
-    final ZoneId frZoneId = ZoneId.of("Europe/Paris");
-    
-    long topStart = 0     ;
+    long           topStart    = 0                         ;
 
-    public static Integer INTERVAL    = null ;
+    public Integer INTERVAL    = null                      ;
     
-    public static String  LOGGER_FILE = null ;
+    public String  LOGGER_FILE = null                      ;
     
-  
-    public StreamerLog() {
+    final DateTimeFormatter patternDateFr = DateTimeFormatter.ofLocalizedDateTime( FormatStyle.FULL )
+                                                             .withLocale(Locale.FRANCE)             ;
+    
+    
+    public StreamerLog( String logger_file, int interval ) {
+        this.LOGGER_FILE = logger_file ;
+        this.INTERVAL    = interval    ;
     }
     
     @Override
-    public void write(OutputStream output) throws IOException {
+    public void write(OutputStream output) throws IOException     {
        
        System.out.println(" Processing data in StreamerLog ... ") ;
        
@@ -59,8 +59,8 @@ public class StreamerLog  implements StreamingOutput {
 
        crunchifyExecutor.execute ( crunchify_tailF ) ;
        
-       String line = null    ;
-      
+       String line = null   ;
+    
        try {
              while ( true ) {
 
@@ -86,7 +86,7 @@ public class StreamerLog  implements StreamingOutput {
                  }
                  
              }
-        } catch ( IOException ex ) {
+       } catch ( IOException ex ) {
 
             if (ex.getClass().getName().endsWith(".ClientAbortException")) {
                 
@@ -111,9 +111,9 @@ public class StreamerLog  implements StreamingOutput {
             
         } finally {
             writer.close() ;
-       }
+        }
        
-        System.out.println(" CLOSE LOG SERVICE .... ") ;
+       System.out.println(" CLOSE LOG SERVICE .... ") ;
     }
     
 }

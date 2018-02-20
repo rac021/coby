@@ -12,22 +12,17 @@ import javax.ws.rs.Produces ;
 import javax.ws.rs.HeaderParam ;
 import javax.ws.rs.core.UriInfo ;
 import javax.ws.rs.core.Context ;
+import javax.ws.rs.core.Response ;
+import com.rac021.jaxy.coby.io.Writer ;
 import javax.annotation.PostConstruct ;
 import com.rac021.jax.api.crypto.CipherTypes ;
-import com.rac021.jax.api.qualifiers.ResourceRegistry;
+import com.rac021.jaxy.coby.checker.TokenManager ;
 import com.rac021.jax.api.qualifiers.security.Policy ;
 import com.rac021.jax.api.qualifiers.security.Cipher ;
 import com.rac021.jax.api.qualifiers.ServiceRegistry ;
+import com.rac021.jax.api.qualifiers.ResourceRegistry ;
 import com.rac021.jax.api.qualifiers.security.Secured ;
-import com.rac021.jaxy.coby.service.configuration.CobyConfiguration;
-import java.io.File;
-import java.nio.file.FileVisitOption;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Comparator;
-import javax.ws.rs.core.Response;
+import com.rac021.jaxy.coby.service.configuration.CobyConfiguration ;
 
 /**
  *
@@ -56,30 +51,19 @@ public class CobyService    {
     
     @GET
     @Produces( {  "xml/plain" , "json/plain" , "json/encrypted" , "xml/encrypted"  } )
-    public Response cancel ( @HeaderParam("keep") String filterdIndex, 
+    public Response cancel ( @HeaderParam("API-key-Token") String token  , 
+                             @HeaderParam("keep") String filterdIndex    , 
                              @Context UriInfo uriInfo ) throws Exception {    
          
         //executorService.shutdownNow() ;
         
-      removeDirectory(configuration.getOutputDataFolder() ) ;
-       return Response.status(Response.Status.OK)
-                      .entity("\n Coby Output Directory Cleaned \n" )
-                      .build() ;      
+        String login     = TokenManager.getLogin(token) ;
+        String path_data = TokenManager.buildOutputFolder(configuration.getOutputDataFolder(), login ) ;
+        
+        Writer.removeDirectory( path_data ) ;
+        return Response.status(Response.Status.OK)
+                       .entity("\n Coby Output Directory Cleaned \n" )
+                       .build() ;      
     }
-    
-    
-    public static void removeDirectory(String directory) throws Exception {
-     
-      Path rootPath = Paths.get(directory);
-      Files.walk(rootPath, FileVisitOption.FOLLOW_LINKS)
-           .sorted(Comparator.reverseOrder())
-           .map(Path::toFile)
-           .forEach(File::delete);
-      
-     if(! Files.exists(Paths.get(directory), 
-          new LinkOption[]{ LinkOption.NOFOLLOW_LINKS}) )
-      Files.createDirectory(Paths.get(directory))    ;   
-    }
-
+  
 }
-

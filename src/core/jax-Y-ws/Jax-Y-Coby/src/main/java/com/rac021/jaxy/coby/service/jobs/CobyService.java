@@ -11,16 +11,18 @@ import javax.inject.Inject ;
 import javax.ws.rs.Produces ;
 import javax.ws.rs.HeaderParam ;
 import javax.ws.rs.core.UriInfo ;
-import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Context ;
+import javax.ws.rs.core.Response ;
 import java.util.stream.Collectors ;
 import javax.annotation.PostConstruct ;
 import com.rac021.jax.api.crypto.CipherTypes ;
-import com.rac021.jax.api.qualifiers.ResourceRegistry;
+import com.rac021.jaxy.coby.checker.TokenManager ;
 import com.rac021.jax.api.qualifiers.security.Policy ;
 import com.rac021.jax.api.qualifiers.security.Cipher ;
 import com.rac021.jax.api.qualifiers.ServiceRegistry ;
 import com.rac021.jax.api.qualifiers.security.Secured ;
+import com.rac021.jax.api.qualifiers.ResourceRegistry ;
+import com.rac021.jax.api.exceptions.BusinessException ;
 import static com.rac021.jaxy.coby.scheduler.COBYScheduler.JOBS ;
 
 /**
@@ -47,21 +49,23 @@ public class CobyService    {
     
     @GET
     @Produces( {  "xml/plain" , "json/plain" , "json/encrypted" , "xml/encrypted"  } )
-    public Response list ( @HeaderParam("keep") String filterdIndex, 
-                           @Context UriInfo uriInfo ) {    
+    public Response list ( @HeaderParam("API-key-Token") String token ,
+                           @HeaderParam("keep") String filterdIndex   , 
+                           @Context UriInfo uriInfo ) throws BusinessException {    
     
-         System.out.println(" JOBS == " + JOBS ) ;
-        
-         String s = " \n EMPTY JOB LIST \n " ;
+         String s         = " EMPTY JOB LIST \n "        ;
          
+         String login     = TokenManager.getLogin(token) ;
+           
          if( JOBS != null && ! JOBS.isEmpty()) {
             s= JOBS.stream()
                    .filter( job -> job != null)
-                   .map(Object::toString)
-                   .collect(Collectors.joining(" \n\n "));
+                   .filter( job ->  login.equalsIgnoreCase("admin") || job.trim().startsWith(login) )
+                   .map(Object::toString )
+                   .collect(Collectors.joining(" \n -------------------------- \n ")) ;
          }
          return Response.status(Response.Status.OK)
-                        .entity(s )
+                        .entity( "\n " + s )
                         .build() ;
     }
     

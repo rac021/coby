@@ -6,6 +6,7 @@ import java.util.Set ;
 import java.util.List ;
 import javax.ws.rs.GET ;
 import java.util.HashSet ;
+import java.util.Optional ;
 import java.nio.file.Path ;
 import javax.inject.Inject ;
 import java.io.IOException ;
@@ -36,7 +37,6 @@ import com.rac021.jax.api.qualifiers.ServiceRegistry ;
 import com.rac021.jax.api.qualifiers.ResourceRegistry ;
 import org.eclipse.persistence.jaxb.MarshallerProperties ;
 import com.rac021.jaxy.coby.service.configuration.CobyConfiguration ;
-import java.util.Optional;
 
 /**
  *
@@ -214,8 +214,9 @@ public class InfoServices {
                                        return line.split(configuration.getCsvSep())[ _CSV_DISCRIMINATOR_COLUMN ].equalsIgnoreCase(_CLAZZ) ;
                      })
                     .map( line ->  { 
-                        VARIABLES.add( new Variable( line.split(configuration.getCsvSep())[ configuration.getColumnVariableAnaeeName() ],                                       
-                                                     line.split(configuration.getCsvSep())[ configuration.getColumnVariableLocalName()   ] ) ) ;
+                        VARIABLES.add( new Variable( line.split(configuration.getCsvSep())[ configuration.getColumnVariableAnaeeName() ] ,
+                                                     line.split(configuration.getCsvSep())[ configuration.getColumnVariableLocalName() ] ,
+                                                     line.split(configuration.getCsvSep())[ configuration.getColumnVariableCategories()] ) ) ;
                         return line ;
                      })
                     .count() ;

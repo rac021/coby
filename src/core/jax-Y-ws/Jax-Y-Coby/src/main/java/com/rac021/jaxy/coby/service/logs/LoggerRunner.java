@@ -1,16 +1,16 @@
 
-package com.rac021.jaxy.coby.service.logs;
+package com.rac021.jaxy.coby.service.logs ;
 
 /**
  *
  * @author ryahiaoui
  */
 
-import java.io.File;
-import java.io.IOException;
-import java.io.RandomAccessFile;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
+import java.io.File ;
+import java.io.IOException ;
+import java.io.RandomAccessFile ;
+import java.util.concurrent.BlockingQueue ;
+import java.util.concurrent.ArrayBlockingQueue ;
  
 
 public class LoggerRunner implements Runnable {

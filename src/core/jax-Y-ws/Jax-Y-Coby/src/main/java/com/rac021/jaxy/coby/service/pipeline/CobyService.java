@@ -8,25 +8,25 @@ package com.rac021.jaxy.coby.service.pipeline ;
 
 import javax.ws.rs.GET ;
 import javax.inject.Inject ;
+import java.net.URLDecoder ;
 import javax.ws.rs.Produces ;
 import javax.ws.rs.HeaderParam ;
 import javax.ws.rs.core.UriInfo ;
 import javax.ws.rs.core.Context ;
-import java.net.URLDecoder ;
 import javax.ws.rs.core.Response ;
+import com.rac021.jaxy.coby.io.Writer ;
 import javax.annotation.PostConstruct ;
 import com.rac021.jax.api.crypto.CipherTypes ;
-import java.io.UnsupportedEncodingException ;
-import com.rac021.jax.api.exceptions.BusinessException ;
-import com.rac021.jax.api.qualifiers.ResourceRegistry ;
+import com.rac021.jaxy.coby.checker.TokenManager ;
+import com.rac021.jaxy.coby.scheduler.COBYScheduler ;
 import com.rac021.jax.api.qualifiers.security.Policy ;
 import com.rac021.jax.api.qualifiers.security.Cipher ;
 import com.rac021.jax.api.qualifiers.ServiceRegistry ;
 import com.rac021.jax.api.qualifiers.security.Secured ;
-import com.rac021.jaxy.coby.io.Writer;
+import com.rac021.jax.api.qualifiers.ResourceRegistry ;
+import com.rac021.jax.api.exceptions.BusinessException ;
 import static com.rac021.jaxy.coby.scheduler.COBYScheduler.JOBS ;
 import com.rac021.jaxy.coby.service.configuration.CobyConfiguration ;
-import static com.rac021.jaxy.coby.scheduler.COBYScheduler.isEmptyFolder ;
 import static com.rac021.jaxy.coby.scheduler.COBYScheduler.executorService ;
 
 /**
@@ -46,7 +46,6 @@ public class CobyService    {
     @Inject
     @ResourceRegistry("CobyPipelineResource")
     CobyResource Resource ;
-
     
     @PostConstruct
     public void init() {
@@ -57,37 +56,38 @@ public class CobyService    {
    
     @GET
     @Produces( {  "xml/plain" , "json/plain" , "json/encrypted" , "xml/encrypted"  } )
-    public Response getResource ( @HeaderParam("keep") String filterdIndex, 
-                                  @Context UriInfo uriInfo ) throws BusinessException, UnsupportedEncodingException {    
-
+    public Response getResource ( @HeaderParam("API-key-Token") String token        ,
+                                  @HeaderParam("keep")          String filterdIndex , 
+                                  @Context UriInfo uriInfo ) throws BusinessException, Exception {    
        
-        if( ! Writer.existFile( configuration.getCobyPipeline() ) ) {
+        if( ! Writer.existFile( configuration.getCobyPipelineScript()) ) {
            
-           System.out.println(" The Script [" + 
-                  configuration.getCobyPipeline() + "] + Not found ! ") ;
+           System.out.println(" The Script [" +  configuration.getCobyPipelineScript() + "] + Not found ! ") ;
            
            return Response.status(Response.Status.OK)
                                    .entity(" \n Script Not found ! \n \n "
-                                        + " Path : " + configuration.getCobyPipeline() )
+                                        + " Path : " + configuration.getCobyPipelineScript() )
                                    .build() ;
-           
         }
-        String query = uriInfo.getRequestUri().getQuery() ;
         
-        if( query == null || query.trim().isEmpty()) {
+        String encodedQuery = uriInfo.getRequestUri().getQuery()   ;
+        
+        if( encodedQuery == null || encodedQuery.trim().isEmpty()) {
                             
             return Response.status(Response.Status.OK)
                            .entity("\n Empty Queries not Accepted  \n  " )
                            .build() ;                 
         }
-         
-        query = URLDecoder.decode( uriInfo.getRequestUri().getQuery().trim(), "UTF-8" ) ;
+        
+        String login = TokenManager.getLogin(token) ;
+        
+        String login_query = login + " " + URLDecoder.decode( encodedQuery.trim(), "UTF-8" ) ;
             
-        if( query.contains("$")  || 
-            query.contains("@")  || 
-            query.contains("^")  || 
-            query.contains("'")  || 
-            query.contains("`") ) {
+        if( login_query.contains("$")  || 
+            login_query.contains("@")  || 
+            login_query.contains("^")  || 
+            login_query.contains("'")  || 
+            login_query.contains("`") ) {
 
              return Response.status(Response.Status.OK)
                             .entity("\n  Please, modify your Request. \n "
@@ -96,35 +96,38 @@ public class CobyService    {
                             .build() ;
         }
         
-        query = cleanQuery(query)    ;
+        login_query = cleanQuery(login_query)         ;
          
         if (  executorService.getActiveCount() == 0 ) {
-
-             if ( ! isEmptyFolder( configuration.getOutputDataFolder())) {
+   
+             if ( Writer.getTotalDirectories( TokenManager.buildOutputFolder( configuration.getOutputDataFolder() , 
+                                                                              login )  ) >= COBYScheduler.MAX_EXTRACTIONS ) {
              
-                 if(  JOBS.size() >= 20 ) {
+                 if( Writer.isFullStack(JOBS.size()) ) {
                      
                     return Response.status(Response.Status.OK)
-                             .entity("\n Full Stack ( 20 Jobs waiting ). \n"
+                             .entity("\n Full Stack ( 50 Jobs waiting ). \n"
                                      + " Please re-try later & \n "
                                      + " Consider Emptying the Data Generation Directory \n "
                                      + " You can use the Service : [ coby_jobs ] to consult waiting jobs " )
                              .build() ;
                  }
                  
-                 JOBS.add(query) ;
+                 JOBS.add(login_query ) ;
                  
                 return Response.status( Response.Status.OK )
-                         .entity("\n JOB Registered BUT .. \n  "
-                                 + "Data has already been generated. \n "
-                                 + " Please transfer them to free the generation directory  .. \n \n "
-                                 + " You can use the Service : [ coby_clean_output ] to clean the Directory " )
-                         .build() ;                 
+                               .entity("\n JOB Registered BUT .. \n  "
+                                     + "Data has already been generated. \n "
+                                     + " Please transfer them to free the generation directory  .. \n \n "
+                                     + " You can use the Service : [ coby_clean_output ] to clean the Directory " )
+                               .build() ;                 
              }
              
-             JOBS.add(query) ;
+             boolean releasedExecutorService = COBYScheduler.executorService.getActiveCount() == 0 ;
+             
+             JOBS.add(login_query) ;
            
-             if( JOBS.size() == 1 || JOBS.isEmpty() ) {
+             if( releasedExecutorService ) {
                
               return Response.status(Response.Status.OK)
                              .entity(" \n JOB Launched. \n \n "
@@ -139,17 +142,17 @@ public class CobyService    {
          
          else  {
              
-              if(  JOBS.size() >= 20 ) {
+              if(  Writer.isFullStack(JOBS.size() )) {
                      
                     return Response.status(Response.Status.OK)
-                             .entity("\n Full Stack ( 20 Jobs waiting ). \n"
+                             .entity("\n Full Stack ( 50 Jobs waiting ). \n"
                                      + " Please re-try later & \n "
                                      + " Consider Emptying the Data Generation Directory \n "
                                      + " You can use the Service : [ coby_jobs ] to consult waiting jobs " )
                              .build() ;
               }
               
-              JOBS.add(query) ;
+              JOBS.add(login_query) ;
               
               if( JOBS.size() == 1 || JOBS.isEmpty() ) {
                

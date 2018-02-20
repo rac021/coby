@@ -15,11 +15,14 @@ import javax.ws.rs.core.Context ;
 import javax.ws.rs.core.Response ;
 import javax.annotation.PostConstruct ;
 import com.rac021.jax.api.crypto.CipherTypes ;
-import com.rac021.jax.api.qualifiers.ResourceRegistry;
+import com.rac021.jaxy.coby.checker.TokenManager ;
+import com.rac021.jaxy.coby.scheduler.COBYScheduler ;
 import com.rac021.jax.api.qualifiers.security.Policy ;
 import com.rac021.jax.api.qualifiers.security.Cipher ;
 import com.rac021.jax.api.qualifiers.ServiceRegistry ;
+import com.rac021.jax.api.qualifiers.ResourceRegistry ;
 import com.rac021.jax.api.qualifiers.security.Secured ;
+import com.rac021.jax.api.exceptions.BusinessException ;
 import static com.rac021.jaxy.coby.scheduler.COBYScheduler.JOBS ;
 import static com.rac021.jaxy.coby.scheduler.PipelineRunner.process ;
 import static com.rac021.jaxy.coby.scheduler.COBYScheduler.SUBMITTED_JOB ;
@@ -48,27 +51,44 @@ public class CobyService    {
     
     @GET
     @Produces( {  "xml/plain" , "json/plain" , "json/encrypted" , "xml/encrypted"  } )
-    public Response cancel ( @HeaderParam("keep") String filterdIndex, 
-                             @Context UriInfo uriInfo ) {    
+    public Response cancel ( @HeaderParam("API-key-Token") String token ,
+                             @HeaderParam("keep") String filterdIndex   , 
+                             @Context UriInfo uriInfo ) throws BusinessException     {    
          
-       // executorService.shutdownNow()        ;
+       // executorService.shutdownNow()       ;
         
-        if( JOBS != null && !JOBS.isEmpty() ) {
-            JOBS.clear() ;
+        String login     = TokenManager.getLogin(token) ;
+         
+        if( JOBS != null && ! JOBS.isEmpty() )       {
+            JOBS.removeIf( q -> q.trim()
+                                 .startsWith(login)) ;
         }
         
         if( SUBMITTED_JOB != null )   {
-            
-           SUBMITTED_JOB.cancel(true) ;
+          
+           if( COBYScheduler.jobOwner == null ) {
+               
+               return Response.status(Response.Status.OK)
+                              .entity(" \n All jobs Cleaned & Canceled ... \n " )
+                              .build() ;
+           }
            
-           process.destroyForcibly()  ;
-           
-           return Response.status(Response.Status.OK)
-                          .entity(" \n All jobs Canceled ... \n " )
-                          .build() ;
+           else if( COBYScheduler.jobOwner.equals(login )) {
+               
+                SUBMITTED_JOB.cancel(true) ;
+
+                process.destroyForcibly()  ;
+
+                return Response.status(Response.Status.OK)
+                               .entity(" \n All jobs Cleaned & Canceled ... \n " )
+                               .build() ;
+           }
         }
+        
         return Response.status(Response.Status.OK)
-                       .entity(" \n No Job submited to Cancel \n " )
+                       .entity(" \n  All jobs Cleared from the Queue \n "
+                               + " No Current Job for the user [ " + login + " ] "
+                               + " submited to Cancel \n " )
                        .build() ;
     }   
 
