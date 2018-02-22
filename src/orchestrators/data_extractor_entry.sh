@@ -306,56 +306,56 @@
         # COBY PIPELINE 
         #####################################################
         #####################################################
-       
-        ./doi_process.sh  ip=localhost                                                   \
-                          namespace=soere                                                \
-                          ro=$RO                                                         \
-                          rw=$RW                                                         \
-                          si=$SI                                                         \
-                          db=$DATA_BASE                                                  \
-                          ext_obda=$EXT_OBDA                                             \
-                          ext_graph=$EXT_GRAPH                                           \
-                          class_file_name=$CLASS_FILE_NAME                               \
-                          sparql_file_name=$SPARQL_FILE_NAME                             \
-                          csv_file_name=$INPUT_CSV_FILE_NAME                             \
-                          valide_csv_file_name=$OUTPUT_VALIDE_CSV_FILE_NAME              \
-                          csv_sep=$CSV_SEP                                               \
-                          intra_separators="$INTRA_CSV_SEP"                              \
-                          columns="$COLUMNSTO_VALIDATE"                                  \
-                          connec_file_name=$CONNEC_FILE_NAME                             \
-                                                                                         \
-                          yed_gen_ontop_version=$YED_GEN_ONTOP_VERSION                   \
-                          ontop_log_level=$ONTOP_LOG_LEVEL                               \
-                                                                                         \
-                          ontop_xms="$ONTOP_XMS"                                         \
-                          ontop_xmx="$ONTOP_XMX"                                         \
-                          ontop_ttl_format="$ONTOP_TTL_FORMAT"                           \
-                          ontop_batch="$ONTOP_BATCH"                                     \
-                          ontop_page_sifze="$ONTOP_PAGE_SIZE"                            \
-                          ontop_flush_count="$ONTOP_FLUSH_COUNT"                         \
-                          ontop_merge="$ONTOP_MERGE"                                     \
-                          ontop_query="$ONTOP_QUERY"                                     \
-                          ontop_fragment="$ONTOP_FRAGMENT"                               \
-                                                                                         \
-                          strict_mode_filter="$STRICT_MODE_FILTER"                       \
-                          output_root="$OUTPUT_ROOT"                                     \
-                          "$ONTOP_OUT_NOT_OUT_ONTOLOGY"                                  \
-                          "$ONTOP_DEBUG"                                                 \
-                                                                                         \
-                          corese_xms="$CORESE_XMS"                                       \
-                          corese_xmx="$CORESE_XMX"                                       \
-                          corese_query="$CORESE_QUERY"                                   \
-                          corese_peek="$CORESE_PEEK"                                     \
-                          corese_fragment="$CORESE_FRAGMENT"                             \
-                          corese_flush_count="$CORESE_FLUSH_COUNT"                       \
-                          corese_format="$CORESE_FORMAT"                                 \
-                          corese_output_extension="$CORESE_OUTPUT_EXTENSION"             \
-                          "$CORESE_IGNORE_LINE_BREAK"                                    \
-                          class_values="$CLASS_VALUES"                                   \
-                          query_user="$QUERY"                                            \
-                          reserved_paramaters_words="$RESERVED_PARAMETERS_WORDS"         \
-                          corese_extract_only_inference="$CORESE_EXTRACT_ONLY_INFERENCE" \
-                          "ingore_case_sensitive_filtering_variables"                  
+
+        ./data_extractor_process.sh  ip=localhost                                                   \
+                                     namespace=soere                                                \
+                                     ro=$RO                                                         \
+                                     rw=$RW                                                         \
+                                     si=$SI                                                         \
+                                     db=$DATA_BASE                                                  \
+                                     ext_obda=$EXT_OBDA                                             \
+                                     ext_graph=$EXT_GRAPH                                           \
+                                     class_file_name=$CLASS_FILE_NAME                               \
+                                     sparql_file_name=$SPARQL_FILE_NAME                             \
+                                     csv_file_name=$INPUT_CSV_FILE_NAME                             \
+                                     valide_csv_file_name=$OUTPUT_VALIDE_CSV_FILE_NAME              \
+                                     csv_sep=$CSV_SEP                                               \
+                                     intra_separators="$INTRA_CSV_SEP"                              \
+                                     columns="$COLUMNSTO_VALIDATE"                                  \
+                                     connec_file_name=$CONNEC_FILE_NAME                             \
+                                                                                                    \
+                                     yed_gen_ontop_version=$YED_GEN_ONTOP_VERSION                   \
+                                     ontop_log_level=$ONTOP_LOG_LEVEL                               \
+                                                                                                    \
+                                     ontop_xms="$ONTOP_XMS"                                         \
+                                     ontop_xmx="$ONTOP_XMX"                                         \
+                                     ontop_ttl_format="$ONTOP_TTL_FORMAT"                           \
+                                     ontop_batch="$ONTOP_BATCH"                                     \
+                                     ontop_page_sifze="$ONTOP_PAGE_SIZE"                            \
+                                     ontop_flush_count="$ONTOP_FLUSH_COUNT"                         \
+                                     ontop_merge="$ONTOP_MERGE"                                     \
+                                     ontop_query="$ONTOP_QUERY"                                     \
+                                     ontop_fragment="$ONTOP_FRAGMENT"                               \
+                                                                                                    \
+                                     strict_mode_filter="$STRICT_MODE_FILTER"                       \
+                                     output_root="$OUTPUT_ROOT"                                     \
+                                     "$ONTOP_OUT_NOT_OUT_ONTOLOGY"                                  \
+                                     "$ONTOP_DEBUG"                                                 \
+                                                                                                    \
+                                     corese_xms="$CORESE_XMS"                                       \
+                                     corese_xmx="$CORESE_XMX"                                       \
+                                     corese_query="$CORESE_QUERY"                                   \
+                                     corese_peek="$CORESE_PEEK"                                     \
+                                     corese_fragment="$CORESE_FRAGMENT"                             \
+                                     corese_flush_count="$CORESE_FLUSH_COUNT"                       \
+                                     corese_format="$CORESE_FORMAT"                                 \
+                                     corese_output_extension="$CORESE_OUTPUT_EXTENSION"             \
+                                     "$CORESE_IGNORE_LINE_BREAK"                                    \
+                                     class_values="$CLASS_VALUES"                                   \
+                                     query_user="$QUERY"                                            \
+                                     reserved_paramaters_words="$RESERVED_PARAMETERS_WORDS"         \
+                                     corese_extract_only_inference="$CORESE_EXTRACT_ONLY_INFERENCE" \
+                                     "ingore_case_sensitive_filtering_variables"                  
     
     }
     
