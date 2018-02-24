@@ -1595,6 +1595,23 @@ Query_(5):  SELECT dty_id, var_id , var_name, var_name_en   FROM (
         </y:ShapeNode>
       </data>
     </node>
+    <node id="n42">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="36.0" width="188.7797103130165" x="-3126.8474966332815" y="-386.8160134057071"/>
+          <y:Fill color="#99CCFF" transparent="false"/>
+          <y:BorderStyle color="#3366FF" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="178.70703125" x="5.03633953150802" y="10.1796875">?VAR_CHARACTERISTIC_GRAPH<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="roundrectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
     <edge id="e0" source="n19" target="n20">
       <data key="d8"/>
       <data key="d10">
@@ -2211,6 +2228,19 @@ Query_(5):  SELECT dty_id, var_id , var_name, var_name_en   FROM (
           <y:LineStyle color="#999999" type="line" width="1.0"/>
           <y:Arrows source="none" target="delta"/>
           <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" horizontalTextPosition="center" iconTextGap="4" modelName="free" modelPosition="anywhere" preferredPlacement="center_on_edge" ratio="0.5" textColor="#333333" verticalTextPosition="bottom" visible="true" width="101.1875" x="-110.86705134929844" y="8.95892351322118">hasMeasurement<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e38" source="n28" target="n42">
+      <data key="d8"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="19.820618320542053" sy="20.96793289387483" tx="-4.547473508864641E-13" ty="-0.8586654209635753"/>
+          <y:LineStyle color="#999999" type="line" width="1.0"/>
+          <y:Arrows source="none" target="delta"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" horizontalTextPosition="center" iconTextGap="4" modelName="centered" modelPosition="center" preferredPlacement="center_on_edge" ratio="0.5" textColor="#333333" verticalTextPosition="bottom" visible="true" width="94.0439453125" x="-47.02209460177346" y="29.061958277318354">ofCharacteristic<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
