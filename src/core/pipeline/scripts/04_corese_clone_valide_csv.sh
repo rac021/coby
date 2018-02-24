@@ -84,7 +84,6 @@
                 echo "   query_file=         : Path of the file containing the query that will be used to validate columns. Ex : query_file=sparql.txt "
                 echo "   xms=                : Ex  xms=-Xms512m                                                                                        "
                 echo "   xmx=                : Ex  xms=-Xmx2g                                                                                          "
-                
                 echo
                 EXIT;
          ;;
