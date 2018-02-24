@@ -19,8 +19,8 @@
        echo " Coby Exited "
        exit 2
    fi
-  }     
-  
+  }   
+    
   CURRENT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
   cd $CURRENT_PATH 
   ROOT_PATH="${CURRENT_PATH/}"
@@ -42,7 +42,6 @@
   fi    
 
   PARENT_SI="$(dirname "$SI")"
-
   
   while [[ "$#" > "0" ]] ; do
      case $1 in
@@ -69,8 +68,8 @@
                     ("xms")              XMS=$VALUE
                     ;;
                     ("xmx")              XMX=$VALUE
-                    esac
-                    ;;
+               esac
+         ;;
          help)  echo
                 echo " Total Arguments : Eleven                                                                                                        "
                 echo
@@ -95,8 +94,7 @@
          ;;
      esac
      shift
-  done   
-            
+  done               
             
   OWL=${OWL:-"$PARENT_SI/$RELATIVE_PATH_OWL"}
   CSV=${CSV:-"$SI/csv/semantic_si.csv"}
@@ -154,11 +152,9 @@
      echo -e "\e[91m Missing PREFIX File [[ $PREFIX ]] ! \e[39m "
      EXIT
   fi
-  
-  
+    
   echo -e "\e[90m Strating Generation... \e[39m "
   echo
-
   
   java  $XMS  $XMX  -cp ../libs/CoreseInfer.jar corese.csv.Prefixer \
         -ontology   "$OWL"                                          \
@@ -171,8 +167,7 @@
         $QUERY_FILE                                                 \
         $ENABLE_FULL_URI                                            \
         $ENABLE_URI_BRACKETS 
-  
-  
+    
   exitValue=$? 
 
   if [ $exitValue != 0 ] ; then 
