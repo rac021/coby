@@ -19,8 +19,7 @@
        echo " Coby Exited "
        exit 2
    fi
-  }   
-  
+  }     
   
   CURRENT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
   cd $CURRENT_PATH 
@@ -40,8 +39,7 @@
      
   if [ "$SI" == "" ] ; then  
     SI="$PARENT_DIR/SI" 
-  fi
-    
+  fi    
 
   PARENT_SI="$(dirname "$SI")"
 
@@ -66,24 +64,28 @@
                     ;; 
                     ("columns")          COLUMNS=$VALUE
                     ;;
+                    ("query_file")       QUERY_FILE=$VALUE
+                    ;;
                     ("xms")              XMS=$VALUE
                     ;;
                     ("xmx")              XMX=$VALUE
                     esac
                     ;;
          help)  echo
-                echo " Total Arguments : Ten                                                                                          "
+                echo " Total Arguments : Eleven                                                                                                        "
                 echo
-                echo "   owl=                : Ontology path file                                                                     "
-                echo "   csv=                : CSV to validate                                                                        "
-                echo "   out=                : output valide file                                                                     "
-                echo "   prefix_file=        : File path containing Prefixes                                                          "
-                echo '   intra_separators=   : Intra column separator - Ex : intra_separators="-intra_sep > -intra_sep < -intra_sep ,"'
-                echo '   columns=            : Columns to validate - Ex : columns="-column 0 -column 10"                              '
-                echo "   enable_full_uri=    : Enable full path URI output in the CSV. Ex : -enable_full_uri                          "
-                echo "   enable_uri_brackets : Put URI in brackets.Ex : -enable_uri_brackets                                          "
-                echo "   xms=                : Ex  xms=-Xms512m                                                                       "
-                echo "   xmx=                : Ex  xms=-Xmx2g                                                                         "
+                echo "   owl=                : Ontology path file                                                                                      "
+                echo "   csv=                : CSV to validate                                                                                         "
+                echo "   out=                : output valide file                                                                                      "
+                echo "   prefix_file=        : File path containing Prefixes                                                                           "
+                echo '   intra_separators=   : Intra column separator - Ex : intra_separators="-intra_sep > -intra_sep < -intra_sep ,"                 '
+                echo '   columns=            : Columns to validate - Ex : columns="-column 0 -column 10"                                               '
+                echo "   enable_full_uri=    : Enable full path URI output in the CSV. Ex : -enable_full_uri                                           "
+                echo "   enable_uri_brackets : Put URI in brackets.Ex : -enable_uri_brackets                                                           "
+                echo "   query_file=         : Path of the file containing the query that will be used to validate columns. Ex : query_file=sparql.txt "
+                echo "   xms=                : Ex  xms=-Xms512m                                                                                        "
+                echo "   xmx=                : Ex  xms=-Xmx2g                                                                                          "
+                
                 echo
                 EXIT;
          ;;
@@ -94,7 +96,8 @@
      esac
      shift
   done   
-
+            
+            
   OWL=${OWL:-"$PARENT_SI/$RELATIVE_PATH_OWL"}
   CSV=${CSV:-"$SI/csv/semantic_si.csv"}
   OUT=${OUT:-"$SI/csv/piepeline_si.csv"}
@@ -102,13 +105,18 @@
   CSV_SEP=${CSV_SEP:-";"}  
   INTRA_SEP=${INTRA_SEP:-" -intra_sep , "}
   COLUMNS=${COLUMNS:-" -column 0 "}
+  
   XMS=${XMS:-"$DEFAULT_XMS"}
   XMX=${XMX:-"$DEFAULT_XMX"}
   
   ENABLE_FULL_URI=${ENABLE_FULL_URI:-""}
   
   ENABLE_URI_BRACKETS=${ENABLE_URI_BRACKETS:-""}
-  
+    
+  if [ ! -z "$QUERY_FILE" ]; then 
+    QUERY_FILE=" -query $QUERY_FILE"
+  fi
+   
   tput setaf 2
   echo 
   echo -e " ######################################################### "
@@ -125,6 +133,7 @@
   echo -e " ##  OUTPUT Valide CSV   : $OUT                            "
   echo -e " ##  ENABLE_FULL_URI     : $ENABLE_FULL_URI                "
   echo -e " ##  ENABLE_URI_BRACKETS : $ENABLE_URI_BRACKETS            "
+  echo -e " ##  QUERY_FILE          : $QUERY_FILE                     "
   echo
   echo -e " ##  XMS                 : $XMS                            "
   echo -e " ##  XMX                 : $XMX                            "
@@ -159,6 +168,7 @@
         -csv_sep    "$CSV_SEP"                                      \
         $INTRA_SEP                                                  \
         $COLUMNS                                                    \
+        $QUERY_FILE                                                 \
         $ENABLE_FULL_URI                                            \
         $ENABLE_URI_BRACKETS 
   
