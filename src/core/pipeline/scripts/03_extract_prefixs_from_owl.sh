@@ -39,7 +39,7 @@
          help)  echo
 		echo " Total Arguments : Two                    "
                 echo
-		echo "   ontology=    :  IP Host                "
+		echo "   ontology=    :  IP Path                "
 		echo "   prefixFile=  :  output File of prefixs "
 		echo
                 EXIT;
