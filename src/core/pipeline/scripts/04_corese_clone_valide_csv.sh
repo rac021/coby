@@ -73,10 +73,10 @@
          help)  echo
                 echo " Total Arguments : Eleven                                                                                                        "
                 echo
-                echo "   owl=                : Ontology path file                                                                                      "
+                echo "   owl=                : Path of the Ontology file                                                                               "
                 echo "   csv=                : CSV to validate                                                                                         "
                 echo "   out=                : output valide file                                                                                      "
-                echo "   prefix_file=        : File path containing Prefixes                                                                           "
+                echo "   prefix_file=        : prefix file path                                                                                        "
                 echo '   intra_separators=   : Intra column separator - Ex : intra_separators="-intra_sep > -intra_sep < -intra_sep ,"                 '
                 echo '   columns=            : Columns to validate - Ex : columns="-column 0 -column 10"                                               '
                 echo "   enable_full_uri=    : Enable full path URI output in the CSV. Ex : -enable_full_uri                                           "
