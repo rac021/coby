@@ -80,7 +80,7 @@
                 echo '   intra_separators=   : Intra column separator - Ex : intra_separators="-intra_sep > -intra_sep < -intra_sep ,"                 '
                 echo '   columns=            : Columns to validate - Ex : columns="-column 0 -column 10"                                               '
                 echo "   enable_full_uri=    : Enable full path URI output in the CSV. Ex : -enable_full_uri                                           "
-                echo "   enable_uri_brackets : Put URI in brackets.Ex : -enable_uri_brackets                                                           "
+                echo "   enable_uri_brackets : Put URI in brackets. Ex : -enable_uri_brackets                                                          "
                 echo "   query_file=         : Path of the file containing the query that will be used to validate columns. Ex : query_file=sparql.txt "
                 echo "   xms=                : Ex  xms=-Xms512m                                                                                        "
                 echo "   xmx=                : Ex  xms=-Xmx2g                                                                                          "
