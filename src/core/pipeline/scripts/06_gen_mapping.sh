@@ -181,7 +181,6 @@
   if [ -z "$COLUMN" ]; then
      COLUMN_TAG=""
   fi
-
    
   if [ ! -z "$MATCH_WORD" -a ! -z "$MATCH_COLUMN" ]; then
      MATCH_WORD=" -matchWord $MATCH_WORD "
@@ -317,5 +316,4 @@ COMMENT
   fi
 
   echo
-
 
