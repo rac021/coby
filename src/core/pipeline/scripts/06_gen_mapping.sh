@@ -100,7 +100,7 @@
                 echo "   predicat_pattern_context=  :  used for pattern context entities: Ex : predicat_pattern_context=oboe-core:ofEntity "
                 echo "   magicFilterFile=           :  Magic filter file. Ex : magicFilterFile=my_magic_filter.txt                         "
                 echo "   version=                   :  ONTOP Version. Ex : version=V1                                                      "
-                echo '   match_word=                :  used to filter csv file lines. Ex : match_word=" variable1 variable2 "              '
+                echo '   match_word=                :  used to filter csv file lines. Ex : match_word=" variable1 , variable2 "            '
                 echo '   match_column=              :  used to indicates the column for match_word. Ex : match_column=2                    '
                 echo
                 EXIT ;
