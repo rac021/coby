@@ -256,7 +256,11 @@
   echo
 
   # TREAT CSV
+
+  DIR=$(dirname "${OUTPUT}")
   
+  TOTAL_FILES_BEFORE_PROCESSING=`find "$DIR" -name "*" -type f | wc -l `
+
   # FOR DEBUG 
   # -Xdebug -Xrunjdwp:transport=dt_socket,address=11555,server=y,suspend=y \
  
@@ -293,11 +297,10 @@
                                              -ext $EXTENSION \
                                              -ig 
 COMMENT
-
-
-  DIR=$(dirname "${OUTPUT}")
   
-  if test "$(ls -A "$DIR")"; then
+  TOTAL_FILES_AFTER_PROCESSING=`find "$DIR" -name "*" -type f | wc -l `
+  
+  if [ "$TOTAL_FILES_AFTER_PROCESSING" -gt "$TOTAL_FILES_BEFORE_PROCESSING" ] ; then
     echo -e "\e[36m Mapping generated in : $DIR \e[39m "
   else
    echo -e "\e[36m No Mapping Generated in the Directory : $DIR \e[39m "
