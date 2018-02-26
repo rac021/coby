@@ -90,7 +90,7 @@
                 echo "   class=                     :  Discriminator class                                                                 "
                 echo "   column=                    :  Discriminator Column                                                                "
                 echo "   prefixFile=                :  Prefix File Path                                                                    "
-                echo "   defaultPrefix=             :  Default Prefix ( if not indeicated in graph )                                       "
+                echo "   defaultPrefix=             :  Default Prefix ( if not indicated in the graph )                                    "
                 echo "   connecFileName=            :  Connection file                                                                     "
                 echo "   csvFile                    :  CSV File Path                                                                       "
                 echo "   csvFileName                :  CSV File Name  ( Default path is used ../SI/[THE_SI]/csv/[csvFileName])             "
