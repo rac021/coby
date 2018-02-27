@@ -13,8 +13,14 @@
 
    `  ./01_coby_standard_builder.sh `
    
-#####   Example : Copy "SI" + "orchestrators" to the coby_standard_build directory ( created by the previous script )
+#####   Example :
 
+-  Make sure Copy "SI" + "orchestrators" to the coby_standard_build directory ( created by the previous script )
+
+   `   cp -r src/SI/ coby_standard_bin/pipeline/ `
+   `   cp -r src/orchestrators/ coby_standard_bin/pipeline/`
+   
+   
    `  ./coby_standard_build/pipeline/orchestrators/synthesis_extractor_entry.sh `
    
 ----------------------------------------------------------------------------------
