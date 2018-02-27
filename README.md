@@ -6,7 +6,8 @@
 -  Make sure using the option "--recursive" when cloning the project, this allows include the submodules
 
    `  git clone --recursive https://github.com/rac021/coby.git . `
-   
+  
+----------------------------------------------------------------------------------
 
 ### 1. Coby standard_build :
 
@@ -16,6 +17,8 @@
 
    `  coby_standard_build/pipeline/orchestrators/synthesis_extractor_entry.sh `
    
+----------------------------------------------------------------------------------
+
 ### 2. Coby docker_build :
 
    `  ./02_coby_docker_builder.sh `
