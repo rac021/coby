@@ -1,0 +1,30 @@
+Standard AnaEE;Categorie(s) AnaEE;Contexte(s);prefix Entité si autre que anaee-france;Entité;prefix Caractéristique si autre que anaee-france;Caractéristique;Protocol;Qualificatifs (flexible);prefix Unité si autre que anaee-france;Unité (flexible);nom (fr) dans bd;nom (fr) type de donnée dans la bd
+DissolvedAmmoniumNitrogenMassConcentration;PhysicalChemistry;Water, Solutes, Ammonium;;Nitrogen;;MassConcentration;;;oboe-standards;MilligramPerLiter;Azote ammoniacal;physico chimie
+Dissolved Nitrate Mass Concentration;PhysicalChemistry;Water, Solutes;;Nitrate;;MassConcentration;;;oboe-standards;MilligramPerLiter;Azote nitreux;physico chimie
+Dissolved Nitrite Mass Concentration;PhysicalChemistry;Water, Solutes;;Nitrite;;MassConcentration;;;oboe-standards;MilligramPerLiter;Azote nitrique;physico chimie
+Particulate Organic Nitrogen Mass Concentration;PhysicalChemistry;Water, Particle;;Organic Nitrogen;;MassConcentration;;;oboe-standards;MilligramPerLiter;Azote organique particulaire;physico chimie
+Total nitrogen Mass Concentration;PhysicalChemistry;Water;;Nitrogen;;MassConcentration;;;oboe-standards;MilligramPerLiter;Azote total;physico chimie
+Water Ionic balance;PhysicalChemistry;;;Water;;Ionic Balance;;;;Percent;Balance ionique;physico chimie
+CalciumMassConcentration;PhysicalChemistry;Water;;Calcium;;MassConcentration;;;oboe-standards;MilligramPerLiter;Calcium;physico chimie
+Dissolved organic carbon Mass Concentration;PhysicalChemistry;Water, Solutes;;Organic Carbon;;MassConcentration;;;oboe-standards;MilligramPerLiter;Carbone organique dissous;physico chimie
+Particulate organic carbon Mass Concentration;PhysicalChemistry;Water, Particle;;Organic Carbon;;MassConcentration;;;oboe-standards;MilligramPerLiter;Carbone organique particulaire;physico chimie
+Total Organic Carbon Mass Concentration;PhysicalChemistry;Water;;Total Organic Carbon;;MassConcentration;;;oboe-standards;MilligramPerLiter;Carbone organique total;physico chimie
+DissolvedChlorideMassConcentration;PhysicalChemistry;Water, Solutes;;Chloride;;MassConcentration;;;oboe-standards;MilligramPerLiter;Chlorures;physico chimie
+Water conductivity;PhysicalChemistry;;;Water;;Conductivity;;;;Microsiemens Per Centimeter;Conductivité;physico chimie
+Dissolved Magnesium Mass Concentration;PhysicalChemistry;Water, Solutes;;Magnesium;;MassConcentration;;;oboe-standards;MilligramPerLiter;Magnésium;physico chimie
+Water suspended matter Mass Concentration;PhysicalChemistry;Water;;Suspended Matter;;MassConcentration;;;oboe-standards;MilligramPerLiter;Matières en suspension;physico chimie
+Water Suspended Organic  Matter Mass Concentration;PhysicalChemistry;Water;;Suspended Organic Matter;;MassConcentration;;;oboe-standards;MilligramPerLiter;Matières en Suspension Organiques;physico chimie
+Dissolved Oxygen Mass Concentration;PhysicalChemistry;Water, Solutes;;Dissolved Oxygen;;MassConcentration;;;oboe-standards;MilligramPerLiter;Oxygène Dissous;physico chimie
+WaterPH;PhysicalChemistry;;;Water;;pH;;;;pHUnit;pH;physico chimie
+Dissolved Orthophosphorus Mass Concentration;PhysicalChemistry;Water, Solutes;;Ortho phosphorus;;MassConcentration;;;oboe-standards;MilligramPerLiter;Phosphore Ortho;physico chimie
+Particulate Phosphorus Mass Concentration;PhysicalChemistry;Water, Particle;;Phosphorus;;MassConcentration;;;oboe-standards;MilligramPerLiter;Phosphore Particulaire;physico chimie
+Total Phosphorus Mass Concentration;PhysicalChemistry;Water;;Total Phosphorus;;MassConcentration;;;oboe-standards;MilligramPerLiter;Phosphore Total;physico chimie
+Filtered Water Total Nitrogen Mass Concentration;PhysicalChemistry;Water, Filtered water;;Total Nitrogen;;MassConcentration;;;oboe-standards;MilligramPerLiter;Azote total filtré;physico chimie
+Filtered Water Total Phosphorus Mass Concentration;PhysicalChemistry;Water, Filtered water;;Total Phosphorus;;MassConcentration;;;oboe-standards;MilligramPerLiter;Phosphore total filtré;physico chimie
+DissolvedPotassiumMassConcentration;PhysicalChemistry;Water, Solutes;;Potassium;;MassConcentration;;;oboe-standards;MilligramPerLiter;Potassium;physico chimie
+Dissolved Reactive Silica Mass Concentration;PhysicalChemistry;Water, Solutes;;Reactive Silica;;MassConcentration;;;oboe-standards;MilligramPerLiter;Silice Réactive;physico chimie
+Dissolved Sodium Mass Concentration;PhysicalChemistry;Water, Solutes;;Sodium;;MassConcentration;;;oboe-standards;MilligramPerLiter;Sodium;physico chimie
+DissolvedSulphatesMassConcentration;PhysicalChemistry;Water, Solutes;;Sulphates;;MassConcentration;;;oboe-standards;MilligramPerLiter;Sulfates;physico chimie
+Water temperature;PhysicalChemistry;;;Water;oboe-characteristics;Temperature;;;;degree celsius;Température;physico chimie
+Total alkali Mass Concentration;PhysicalChemistry;Water;;Total Alkali;;MassConcentration;;;oboe-standards;MilligramPerLiter;Titre alcalimetrique complet;physico chimie
+

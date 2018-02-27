@@ -1,0 +1,2 @@
+CLASS   =  physico chimie
+COLUMN  =  12

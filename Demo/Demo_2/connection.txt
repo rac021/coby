@@ -1,0 +1,18 @@
+
+jdbc.name     = dbLacsMapping
+jdbc.url      = jdbc:postgresql://127.0.0.1/ola?sendBufferSize=5000
+jdbc.user     = ryahiaoui
+jdbc.password = yahiaoui
+jdbc.driver   = org.postgresql.Driver
+
+
+#################################
+### ONTOP V.1 CREDIENTIALS #####
+#################################
+
+obda-sourceUri     : dbLacsMapping
+obda-connectionUrl : jdbc:postgresql://127.0.0.1/ola?sendBufferSize=5000
+
+obda-username      : ryahiaoui
+obda-password      : yahiaoui
+obda-driverClass   : org.postgresql.Driver
