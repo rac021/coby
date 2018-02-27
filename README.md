@@ -18,6 +18,7 @@
 -  Make sure Copy "SI" + "orchestrators" to the coby_standard_build directory ( created by the previous script )
 
    `   cp -r src/SI/ coby_standard_bin/pipeline/ `
+   
    `   cp -r src/orchestrators/ coby_standard_bin/pipeline/`
    
    
