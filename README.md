@@ -15,7 +15,7 @@
    
 #####   Example : Copy "SI" + "orchestrators" to the coby_standard_build directory ( created by the previous script )
 
-   `  coby_standard_build/pipeline/orchestrators/synthesis_extractor_entry.sh `
+   `  ./coby_standard_build/pipeline/orchestrators/synthesis_extractor_entry.sh `
    
 ----------------------------------------------------------------------------------
 
