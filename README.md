@@ -38,6 +38,12 @@
 
 ### 3. Example of how calling scripts that are provided by coby Using Coby standard_build :
 
+-  Without CSV
+
    ` ./coby_standard_bin/pipeline/scripts/06_gen_mapping.sh input=$(pwd)/Demo/Demo_1/ output=$(pwd)/Demo/Demo_1/mapping.obda `
+-  SING CSV 
+
+   ` ./coby_standard_bin/pipeline/scripts/06_gen_mapping.sh input=$(pwd)/Demo/Demo_2/physicochimie/ output=$(pwd)/Demo/Demo_2/mapping.obda class="physico chimie" column="12" csvFile="$(pwd)/Demo/Demo_2/csv/semantic_si.csv"
+ `
    
-   
+
