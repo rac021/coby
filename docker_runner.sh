@@ -1,4 +1,4 @@
-
+#!/bin/bash
 
 docker run -it --net host                                                \
            -v `pwd`/src/orchestrators/.:/opt/coby/pipeline/orchestrators \
