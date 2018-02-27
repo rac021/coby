@@ -15,6 +15,10 @@
 
    `  ./01_coby_standard_builder.sh `
    
+      
+ <p><a href="https://www.youtube.com/watch?v=l08JIPcqgrI?rel=0" rel="nofollow"><img src="https://user-images.githubusercontent.com/7684497/36728847-7668397a-1bc2-11e8-9050-27858bb3b343.png" alt="Intro" data-canonical-src="https://i.ytimg.com/vi/20KVZ0ZnCl4/mqdefault.jpg" style="max-width:10%;"></a></p>
+  
+   
 #####   Example :
 
 -  Make sure Copy "SI" + "orchestrators" to the coby_standard_bin directory ( created by the previous script )
@@ -24,12 +28,8 @@
    `   cp -r src/orchestrators/ coby_standard_bin/pipeline/`
    
    
-   `  ./coby_standard_bin/pipeline/orchestrators/synthesis_extractor_entry.sh `
-  
-   
- <p><a href="https://www.youtube.com/watch?v=l08JIPcqgrI?rel=0" rel="nofollow"><img src="https://user-images.githubusercontent.com/7684497/36728847-7668397a-1bc2-11e8-9050-27858bb3b343.png" alt="Intro" data-canonical-src="https://i.ytimg.com/vi/20KVZ0ZnCl4/mqdefault.jpg" style="max-width:10%;"></a></p>
- 
- 
+   `  ./coby_standard_bin/pipeline/orchestrators/synthesis_extractor_entry.sh `  
+
 ----------------------------------------------------------------------------------
 
 ### 2. Coby docker_build :
