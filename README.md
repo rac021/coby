@@ -38,6 +38,8 @@
 
 ### 3. Example of how calling scripts that are provided by coby Using Coby standard_build :
 
+#### - 06_gen_mapping.sh
+
 -  Without CSV
 
    ` ./coby_standard_bin/pipeline/scripts/06_gen_mapping.sh input=$(pwd)/Demo/Demo_1/ output=$(pwd)/Demo/Demo_1/mapping.obda `
