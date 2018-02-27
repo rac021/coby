@@ -7,7 +7,7 @@
 
    `  git clone --recursive https://github.com/rac021/coby.git . `
   
-  [![Watch the video](https://user-images.githubusercontent.com/7684497/36728847-7668397a-1bc2-11e8-9050-27858bb3b343.png)](https://www.youtube.com/watch?v=ruZTuK-ui2s?rel=0)
+  [![Watch the video](https://user-images.githubusercontent.com/7684497/36728847-7668397a-1bc2-11e8-9050-27858bb3b343.png)](https://www.youtube.com/embed/ruZTuK-ui2s)
 
 ----------------------------------------------------------------------------------
 
@@ -16,7 +16,7 @@
    `  ./01_coby_standard_builder.sh `
    
       
- <p><a href="https://www.youtube.com/watch?v=l08JIPcqgrI?rel=0" rel="nofollow"><img src="https://user-images.githubusercontent.com/7684497/36728847-7668397a-1bc2-11e8-9050-27858bb3b343.png" alt="Intro" data-canonical-src="https://i.ytimg.com/vi/20KVZ0ZnCl4/mqdefault.jpg" style="max-width:10%;"></a></p>
+ <p><a href="https://www.youtube.com/embed/l08JIPcqgrI" rel="nofollow"><img src="https://user-images.githubusercontent.com/7684497/36728847-7668397a-1bc2-11e8-9050-27858bb3b343.png" alt="Intro" data-canonical-src="https://i.ytimg.com/vi/20KVZ0ZnCl4/mqdefault.jpg" style="max-width:10%;"></a></p>
   
    
 #####  Coby standard_build Example :
