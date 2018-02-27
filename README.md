@@ -7,6 +7,8 @@
 
    `  git clone --recursive https://github.com/rac021/coby.git . `
   
+<p><a href="https://www.youtube.com/watch?v=ruZTuK-ui2s?rel=0" rel="nofollow"><img src="https://user-images.githubusercontent.com/7684497/36728847-7668397a-1bc2-11e8-9050-27858bb3b343.png" alt="Intro" data-canonical-src="https://i.ytimg.com/vi/20KVZ0ZnCl4/mqdefault.jpg" style="max-width:10%;"></a></p>
+  
 ----------------------------------------------------------------------------------
 
 ### 1. Coby standard_build :
