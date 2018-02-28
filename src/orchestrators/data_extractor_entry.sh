@@ -232,6 +232,24 @@
     ROOT_PATH="${CURRENT_PATH/}"
     PARENT_DIR="$(dirname "$ROOT_PATH")"
     
+    EXTRACT_ALL_CLASS()  {  
+       FOLDER="$1"
+       _IFS=$IFS  
+       for class_file_path in ` find $FOLDER/*           \
+                                     -type f             \
+                                     -name 'class.txt'   \
+                                     -not                \
+                                     -path "SI/ontology/*"  `;   do
+         LINE_ONE=$(head -n 1  $class_file_path )                     
+         LINE_TWO=$(sed -n '2p'  $class_file_path )                        
+         IFS=$'='
+         read -ra KEY_VALUE <<< "$LINE_ONE" 
+         CLASSS+=`echo -e "${KEY_VALUE[1]}" | xargs` 
+       done
+       IFS=$_IFS
+       echo "$CLASSS"
+    }
+  
     TO_ARRAY() { 
         LINE=$1
         DELIMITER=$2
