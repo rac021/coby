@@ -603,7 +603,7 @@
     
     ONTOP_OUT_ONTOLOGY=${ONTOP_OUT_ONTOLOGY:-""}
 
-    if [ $MUST_NOT_BE_EMPTY_NODES != "" ] ; then    
+    if [ "$MUST_NOT_BE_EMPTY_NODES" != "" ] ; then    
       MUST_NOT_BE_EMPTY_NODES=" -must_not_be_empty \" $MUST_NOT_BE_EMPTY_NODES \" "
     fi
     
