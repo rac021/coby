@@ -58,15 +58,6 @@
     ###                            ###
     ##################################
 
-    QUERY="$1"
-    
-    # Escape some special Characters  
-    QUERY=${QUERY//[\'\"\`\$\^\@]}  
-
-    # Trim
-    QUERY=` echo -n "$QUERY" | sed 's/^ *//;s/ *$// ' `
-    
-
     echo 
     echo " 00 ============================ 00 "
     echo " ** ============================ ** "
@@ -85,19 +76,31 @@
     echo
     
     if [ "$1" == "-i" ] ;  then 
+    
        echo "    COBY INSTALATION ..." ; echo 
-    else 
-       echo " $QUERY "  
+       
+    else   
+    
+       LOGIN="$1"
+       QUERY="$2"      
+       echo " LOGIN : $LOGIN "
+       echo " QUERY : $QUERY "
+       echo " DATE  : "`  date `
+       # Escape some special Characters  
+       QUERY=${QUERY//[\'\"\`\$\^\@]}  
+       # Trim
+       QUERY=` echo -n "$QUERY" | sed 's/^ *//;s/ *$// ' `
+       echo 
+       
     fi
-    echo 
-    echo " ################################## "
+   
+    echo " ################################## " ; echo 
     
     STRICT_MODE_FILTER=""
 
     RESERVED_PARAMETERS_WORDS="CLASS , SI, CSV, SELECT_VARS"
 
-    OUTPUT_ROOT="DOI"
-  
+    OUTPUT_ROOT="DOI"  
 
     SI_PATH="SI" 
    
@@ -194,7 +197,6 @@
      
     ROOT_PATH="${CURRENT_PATH/}"
     PARENT_DIR="$(dirname "$ROOT_PATH")"
-
      
     EXIT() {
      if [  $PPID = 0  ] ; then exit  ; fi
@@ -239,8 +241,7 @@
         fi 
         done < $FILE
         IFS=$OIFS
-    }
-    
+    }    
     
     EXTRACT_VALUES_FROM_LINE() { 
         OIFS=$IFS
@@ -251,8 +252,7 @@
                                 | sed -e 's/^.*'$key' *'$DELIMITER_DDOT_EQ'//' | sed -e 's/'$DELIMITER_AT'//'                       \
                                 | sed 's/  */ /g' `
         IFS=$OIFS
-    }
-    
+    }    
     
     GET_SELECTED_SI() { 
         VALUES=$1
@@ -271,14 +271,14 @@
         IFS=$OIFS
     }
                           
-    
+
     CALL_COBY() { 
        
         ##################################################
         ##  INSTALLATION  ################################
         ##################################################
         
-        if [ "$#" -ne 2 -a "$1" == "-i" ] ; then 
+        if [ "$2" == "" -a "$1" == "-i" ] ; then 
             echo
             echo "  -> The arg [ -i ] is used only for installation. Cmd Ex : "$0" -i db=postgresql "
             EXIT
@@ -366,7 +366,7 @@
     ## COBY ORCHESTRATOR ##
     #######################
     
-    if [[ "$QUERY" == "-i" ]] ; then 
+    if [[ "$1" == "-i" ]] ; then 
        CALL_COBY "$1" "$2"   
        EXIT
     elif [[ -z "$QUERY"  ]] ; then
