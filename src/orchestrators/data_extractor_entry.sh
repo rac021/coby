@@ -155,6 +155,8 @@
         
     ONTOP_DEBUG="" # ENABLE USING "ontop_debug"
     
+    ONTOP_MUST_NOT_BE_EMPTY=" (1) , (2) "
+
     # IMPORTANT : IF CORESE_EXTRACT_ONLY_INFERENCE = TRUE
     # YOU HAVE TO PROVIDE A CORESE SPARQL QUERY ( CORESE_QUERY )  
     #  WITH kg:entailment
@@ -355,6 +357,7 @@
                                      query_user="$QUERY"                                            \
                                      reserved_paramaters_words="$RESERVED_PARAMETERS_WORDS"         \
                                      corese_extract_only_inference="$CORESE_EXTRACT_ONLY_INFERENCE" \
+                                     must_not_be_empty="$ONTOP_MUST_NOT_BE_EMPTY"                   \
                                      "ingore_case_sensitive_filtering_variables"                  
     
     }
