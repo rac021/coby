@@ -51,7 +51,41 @@
        
    ##############################################################################################
    ##############################################################################################   
-   
+       
+    EXIT() {
+     if [  $PPID = 0  ] ; then exit  ; fi
+     parent_script=`ps -ocommand= -p $PPID | awk -F/ '{print $NF}' | awk '{print $1}'`
+     if [ $parent_script = "bash" ] ; then
+         echo; echo -e " \e[90m exited by : $0 \e[39m " ; echo
+         exit 2
+     else
+         if [ $parent_script != "java" ] ; then 
+            echo ; echo -e " \e[90m exited by : $0 \e[39m " ; echo
+            kill -9 `ps --pid $$ -oppid=`;
+            exit 2
+         fi
+         echo " Coby Exited "
+         exit 2
+     fi
+    } 
+    
+    if [ $# = 0 -o "$1" = "help"  -o "$1" = "h"  ]  ;  then
+        echo 
+        echo "  Two ARGS required :                       "
+        echo '   -> ( $1 : LOGIN ) & ( $2 : QUERY       ) '
+        echo '   -> ( $1 : -i    ) & ( $2 : db=postgres ) '
+        echo '   -> ( $1 : -i    ) & ( $2 : db=mysql    ) '
+        EXIT
+    fi    
+ 
+    if [ $# = 1 ] &&  [ "$1" = "-i" ] ; then
+        echo 
+        echo "  Two ARGS required for installation :      "
+        echo '   -> ( $1 : -i    ) & ( $2 : db=postgres ) '
+        echo '   -> ( $1 : -i    ) & ( $2 : db=mysql    ) '
+        EXIT
+    fi   
+  
     ##################################
     ###                            ###
     ### CONFIGURATION ################
@@ -100,8 +134,8 @@
 
     RESERVED_PARAMETERS_WORDS="CLASS , SI, CSV, SELECT_VARS"
 
-    TOKEN=`date +%d_%m_%Y__%H_%M_%S`    
-    OUTPUT_ROOT="../DOI/$LOGIN/$TOKEN" 
+    DATE=`date +%d_%m_%Y__%H_%M_%S`    
+    OUTPUT_ROOT="../DOI/$LOGIN/$DATE" 
 
     SI_PATH="SI" 
    
@@ -197,23 +231,6 @@
      
     ROOT_PATH="${CURRENT_PATH/}"
     PARENT_DIR="$(dirname "$ROOT_PATH")"
-     
-    EXIT() {
-     if [  $PPID = 0  ] ; then exit  ; fi
-     parent_script=`ps -ocommand= -p $PPID | awk -F/ '{print $NF}' | awk '{print $1}'`
-     if [ $parent_script = "bash" ] ; then
-         echo; echo -e " \e[90m exited by : $0 \e[39m " ; echo
-         exit 2
-     else
-         if [ $parent_script != "java" ] ; then 
-            echo ; echo -e " \e[90m exited by : $0 \e[39m " ; echo
-            kill -9 `ps --pid $$ -oppid=`;
-            exit 2
-         fi
-         echo " Coby Exited "
-         exit 2
-     fi
-    } 
     
     TO_ARRAY() { 
         LINE=$1
