@@ -15,6 +15,8 @@
 
    `  ./01_coby_standard_builder.sh `
    
+   `  ./coby_standard_bin/pipeline/scripts/00_install_libs.sh `
+    
       
  <p><a href="https://www.youtube.com/embed/l08JIPcqgrI" rel="nofollow"><img src="https://user-images.githubusercontent.com/7684497/36728847-7668397a-1bc2-11e8-9050-27858bb3b343.png" alt="Intro" data-canonical-src="https://i.ytimg.com/vi/20KVZ0ZnCl4/mqdefault.jpg" style="max-width:10%;"></a></p>
   
