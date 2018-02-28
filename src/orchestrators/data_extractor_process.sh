@@ -1116,9 +1116,9 @@
 
               if [ ! -f $FULL_PATH_VALIDATE_CSV_FILE ]; then
                 echo
-                echo -e "\e[91m --> Error When validate CSV : $SI_FILE ! Abort \e[39m"
+                echo -e "\e[91m --> EMPTY FILTERED CSV FILE FOR : $SI_FILE ! End Process \e[39m"
                 echo
-                EXIT
+                continue 
               fi  
              
               ###############################################################################
