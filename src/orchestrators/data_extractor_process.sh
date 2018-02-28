@@ -1168,7 +1168,7 @@
                                                       connection="$SI/$CONNEC_FILE_NAME"              \
                                                       log_level="$ONTOP_LOG_LEVEL"                    \
                                                       "$ONTOP_NOT_OUT_ONTOLOGY" "$ONTOP_OUT_ONTOLOGY" \
-						      "$MUST_NOT_BE_EMPTY_NODES"                      \
+                                                      "$MUST_NOT_BE_EMPTY_NODES"                      \
                                                       "$ONTOP_DEBUG"
                                                    
             
