@@ -394,15 +394,15 @@
     fi
   
     $SCRIPT_PATH/utils/check_commands.sh java curl psql-mysql mvn awk gawk
-    
-    OUTPUT_ROOT=` readlink -f "$OUTPUT_ROOT" `
-
+  
     if [[ ! -d  "$OUTPUT_ROOT"  ]] ; then
       mkdir -p "$OUTPUT_ROOT" 
     else 
       rm -rf $OUTPUT_ROOT/*.*
       rm -rf $OUTPUT_ROOT/*
     fi
+
+    OUTPUT_ROOT=` readlink -f "$OUTPUT_ROOT" `
 
     QUERY=${QUERY//&/ $DELIMITER_AT }
     QUERY=${QUERY//=/ $DELIMITER_DDOT_EQ }
