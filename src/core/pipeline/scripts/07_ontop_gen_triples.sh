@@ -61,7 +61,8 @@
                     ;;                    
                     ("log_level")  LOG_LEVEL=$VALUE
                     ;;
-                    
+                    ("must_not_be_empty") MUST_NOT_BE_EMPTY_NODES=$VALUE
+                    ;;                    
                esac
 	     ;;
          help)  echo
@@ -150,34 +151,40 @@
   NOT_OUT_ONTOLOGY=${NOT_OUT_ONTOLOGY:-""}
   OUT_ONTOLOGY=${OUT_ONTOLOGY:-""}
 
+  if [ "$MUST_NOT_BE_EMPTY_NODES" != "" ] ; then    
+     MUST_NOT_BE_EMPTY_NODES=" -must_not_be_empty \"$MUST_NOT_BE_EMPTY_NODES \" "
+  fi
+  
   tput setaf 2
   echo 
-  echo -e " ######################################### "
-  echo -e " ######## Info Generation ################ "
-  echo -e " ----------------------------------------- "
-  echo -e "\e[90m$0      \e[32m                       "
+  echo -e " ###################################################     "
+  echo -e " ############# Info Generation #####################     "
+  echo -e " ---------------------------------------------------     "
+  echo -e "\e[90m$0      \e[32m                                     "
   echo
-  echo -e " ##  OWL              : $OWL               "
-  echo -e " ##  OBDA             : $OBDA              "
-  echo -e " ##  CONNECTION_File  : $CONNECTION        "
-  echo -e " ##  OUTPUT           : $OUTPUT            "
-  echo -e " ##  QUERY            : $QUERY             "
-  echo -e " ##  BATCH            : $BATCH             "
-  echo -e " ##  TTL              : $TTL               "
-  echo -e " ##  MERGE            : $MERGE             "
-  echo -e " ##  FLUSHCOUNT       : $FLUSHCOUNT        "
-  echo -e " ##  PAGESIZE         : $PAGESIZE          "
-  echo -e " ##  FRAGMENT         : $FRAGMENT          "
-  echo -e " ##  XMS              : $XMS               "
-  echo -e " ##  XMX              : $XMX               "
+  echo -e " ##  OWL                     : $OWL                      "
+  echo -e " ##  OBDA                    : $OBDA                     "
+  echo -e " ##  CONNECTION_File         : $CONNECTION               "
+  echo -e " ##  OUTPUT                  : $OUTPUT                   "
+  echo -e " ##  QUERY                   : $QUERY                    "
+  echo -e " ##  BATCH                   : $BATCH                    "
+  echo -e " ##  TTL                     : $TTL                      "
+  echo -e " ##  MERGE                   : $MERGE                    "
+  echo -e " ##  FLUSHCOUNT              : $FLUSHCOUNT               "
+  echo -e " ##  PAGESIZE                : $PAGESIZE                 "
+  echo -e " ##  FRAGMENT                : $FRAGMENT                 "
   echo
-  echo -e " ##  OUT_ONTOLOGY     : $OUT_ONTOLOGY      "
-  echo -e " ##  NOT_OUT_ONTOLOGY : $NOT_OUT_ONTOLOGY  "
-
-  echo -e " ##  DEBUG            : $DEBUG             "
-  echo -e " ##  LOG_LEVEL        : $LOG_LEVEL         "
+  echo -e " ##  OUT_ONTOLOGY            : $OUT_ONTOLOGY             "
+  echo -e " ##  NOT_OUT_ONTOLOGY        : $NOT_OUT_ONTOLOGY         "
+  echo
+  echo -e " ##  MUST_NOT_BE_EMPTY_NODES : $MUST_NOT_BE_EMPTY_NODES  "
+  echo -e " ##  DEBUG                   : $DEBUG                    "
+  echo -e " ##  LOG_LEVEL               : $LOG_LEVEL                "
   echo 
-  echo -e " ######################################### "
+  echo -e " ##  XMS                     : $XMS                      "
+  echo -e " ##  XMX                     : $XMX                      "
+  echo
+  echo -e " ####################################################    "
   echo 
   sleep 2
   tput setaf 7
@@ -195,18 +202,42 @@
   echo
  
   # FOR DEBUG 
-  # -Xdebug -Xrunjdwp:transport=dt_socket,address=11555,server=y,suspend=y 
+  # -Xdebug -Xrunjdwp:transport=dt_socket,address=11555,server=y,suspend=y 
   
-  java  $XMS $XMX -cp ../libs/Ontop-Materializer.jar  entry.Main_1_18  \
-        -owl   "$OWL"                                                  \
-        -obda  "$OBDA"                                                 \
-        -out   "$OUTPUT"                                               \
-        -q     "$QUERY"                                                \
-        -connection "$CONNECTION"                                      \
-        -log_level "$LOG_LEVEL"                                        \
-        $TTL  $BATCH  $PAGESIZE  $MERGE  $FRAGMENT  $FLUSHCOUNT        \
-        "$DEBUG" "$OUT_ONTOLOGY" "$NOT_OUT_ONTOLOGY"                   \
-        "$NOT_OUT_ONTOLOGY" "$OUT_ONTOLOGY"
+  COMMAND="   java $XMS $XMX -cp ../libs/Ontop-Materializer.jar  entry.Main_1_18
+                   -owl   \"$OWL\"                                          
+                   -obda  \"$OBDA\"                                         
+                   -out   \"$OUTPUT\"                                       
+                   -q     \"$QUERY\"                                        
+                   -connection \"$CONNECTION\"                              
+                   -log_level \"$LOG_LEVEL\"                                
+                   $TTL  
+                   $BATCH  
+                   $PAGESIZE 
+                   $MERGE  
+                   $FRAGMENT 
+                   $FLUSHCOUNT 
+                   \"$DEBUG\" 
+                   \"$OUT_ONTOLOGY\" 
+                   \"$NOT_OUT_ONTOLOGY\"      
+                   $MUST_NOT_BE_EMPTY_NODES                                
+                   \"$NOT_OUT_ONTOLOGY\" 
+                   \"$OUT_ONTOLOGY\"
+  "
+ 
+  eval $COMMAND
+  
+  #  java  $XMS $XMX -cp ../libs/Ontop-Materializer.jar  entry.Main_1_18  \
+  #        -owl   "$OWL"                                                  \
+  #        -obda  "$OBDA"                                                 \
+  #        -out   "$OUTPUT"                                               \
+  #        -q     "$QUERY"                                                \
+  #        -connection "$CONNECTION"                                      \
+  #        -log_level "$LOG_LEVEL"                                        \
+  #         $TTL  $BATCH  $PAGESIZE  $MERGE  $FRAGMENT  $FLUSHCOUNT       \
+  #         "$DEBUG" "$OUT_ONTOLOGY" "$NOT_OUT_ONTOLOGY"                  \
+  #         $MUST_NOT_BE_EMPTY_NODES                                      \
+  #           "$NOT_OUT_ONTOLOGY" "$OUT_ONTOLOGY"   
    
   exitValue=$? 
 
