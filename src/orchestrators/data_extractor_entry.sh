@@ -232,6 +232,14 @@
     ROOT_PATH="${CURRENT_PATH/}"
     PARENT_DIR="$(dirname "$ROOT_PATH")"
     
+    EXTRACT_ALL_SI() {
+      FOLDER="$1"
+      for SI in ` find $FOLDER -mindepth 1 -maxdepth 1 -type d -not -name "ontology" `; do
+        SIS+=($(basename $SI))
+      done
+      echo "$SIS"
+    }
+
     EXTRACT_ALL_CLASS()  {  
        FOLDER="$1"
        _IFS=$IFS  
@@ -449,9 +457,15 @@
     GET_SELECTED_SI "$RESULT" "$FILE_BINDER"
 
     if [[ -z "${SELECTED_SI[@]}" ]] ; then
-      echo " No SI detected ! Path -> [${SELECTED_SI[@]}] "
-      echo " The process will EXIT "
-      EXIT
+      echo 
+      echo " --> Search and Apply all SI "
+      echo
+      SELECTED_SI=$(EXTRACT_ALL_SI "../SI")
+      if [[ -z "${SELECTED_SI[@]}" ]] ; then
+          echo " No SI detected ! Path -> [${SELECTED_SI[@]}] "
+          echo " The process will EXIT "
+          EXIT   
+      fi
     fi
     
     for si in "${SELECTED_SI[@]}" ; do
