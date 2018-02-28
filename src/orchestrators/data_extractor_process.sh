@@ -431,7 +431,7 @@
                     ;;
                     ("yed_gen_ontop_version") YED_GEN_ONTOP_VERSION=$VALUE
                     ;;
-                    ("must_not_be_empty")     $MUST_NOT_BE_EMPTY_NODES=$VALUE
+                    ("must_not_be_empty")     MUST_NOT_BE_EMPTY_NODES=$VALUE
 		    
                     # Corese ARGS
                     ;;
