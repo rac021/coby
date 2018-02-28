@@ -100,13 +100,13 @@
 
     RESERVED_PARAMETERS_WORDS="CLASS , SI, CSV, SELECT_VARS"
 
-    OUTPUT_ROOT="DOI"  
+    TOKEN=`date +%d_%m_%Y__%H_%M_%S`    
+    OUTPUT_ROOT="../DOI/$LOGIN/$TOKEN" 
 
     SI_PATH="SI" 
    
     if [[ ! -d  "SI" ]] ; then
         SI_PATH="../SI" ;
-        OUTPUT_ROOT="../DOI"
     fi
 
     FILE_BINDER="$SI_PATH/SI.txt"
