@@ -249,8 +249,16 @@
 
   sleep 0.5
   
-  echo
-  echo -e "\e[36m Triples Generated in : $OUTPUT \e[39m "
+  echo 
+  
+  OUT_FOLDER="$(dirname $(readlink -f $OUTPUT ))"
+  
+  if [ "$(ls -A $OUT_FOLDER )" ]; then
+     echo -e "\e[36m Triples Generated in : $OUT_FOLDER \e[39m "
+  else
+    echo -e "\e[36m No Triples Generated in : $OUT_FOLDER \e[39m "
+  fi
+    
   echo
         
 
