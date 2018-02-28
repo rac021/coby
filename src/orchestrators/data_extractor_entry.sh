@@ -134,8 +134,8 @@
 
     RESERVED_PARAMETERS_WORDS="CLASS , SI, CSV, SELECT_VARS"
 
-    DATE=`date +%d_%m_%Y__%H_%M_%S`    
-    OUTPUT_ROOT="../DOI/$LOGIN/$DATE" 
+    DATE_AS_TOKEN=`date +%d_%m_%Y__%H_%M_%S`    
+    OUTPUT_ROOT="../DOI/$LOGIN/$DATE_AS_TOKEN" 
 
     SI_PATH="SI" 
    
