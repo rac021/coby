@@ -235,11 +235,11 @@
     EXTRACT_ALL_CLASS()  {  
        FOLDER="$1"
        _IFS=$IFS  
-       for class_file_path in ` find $FOLDER/*           \
-                                     -type f             \
-                                     -name 'class.txt'   \
-                                     -not                \
-                                     -path "SI/ontology/*"  `;   do
+       for class_file_path in ` find $FOLDER/*                 \
+                                     -type f                   \
+                                     -name 'class.txt'         \
+                                     -not                      \
+                                     -path "*/ontology/class.txt" ` ;  do
          LINE_ONE=$(head -n 1  $class_file_path )                     
          LINE_TWO=$(sed -n '2p'  $class_file_path )                        
          IFS=$'='
@@ -429,6 +429,19 @@
 
     EXTRACT_VALUES_FROM_LINE "CLASS" "$QUERY"  
     CLASS_VALUES="$RESULT"
+   
+    if [[ -z "$CLASS_VALUES" ]] ; then
+       echo 
+       echo " --> Search and Apply all Class values "
+       echo
+       CLASS_VALUES=$( EXTRACT_ALL_CLASS '../SI' )
+       
+       if [[ -z "$CLASS_VALUES" ]] ; then 
+           echo " No CLASS FOUND !      "
+           echo " The process will EXIT "
+           EXIT
+       fi
+    fi
     
     TO_ARRAY "$RESULT" ";"
     EXTRACT_VALUES_FROM_LINE "SI" "$QUERY"  
