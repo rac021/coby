@@ -72,7 +72,7 @@ public class CobyConfiguration {
           columnVariableLocalName  = Integer.parseInt(prop.getProperty("column_variable_local_name")
                                                           .replaceAll(" +", " ").trim())  ;
           
-          columnVariableCategories = Integer.parseInt(prop.getProperty("column_variable_local_name")
+          columnVariableCategories = Integer.parseInt(prop.getProperty("column_variable_categories")
                                                          .replaceAll(" +", " ").trim())  ;
           
           totalExtractionsPerUser  = Integer.parseInt(prop.getProperty("total_extractions_per_user")
