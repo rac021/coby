@@ -602,10 +602,6 @@
     ONTOP_NOT_OUT_ONTOLOGY=${ONTOP_NOT_OUT_ONTOLOGY:-""}
     
     ONTOP_OUT_ONTOLOGY=${ONTOP_OUT_ONTOLOGY:-""}
-
-    if [ "$MUST_NOT_BE_EMPTY_NODES" != "" ] ; then    
-      MUST_NOT_BE_EMPTY_NODES=" -must_not_be_empty \" $MUST_NOT_BE_EMPTY_NODES \" "
-    fi
     
     #########################################
     ##########################################
@@ -901,9 +897,9 @@
                                                      output="$OUTPUT_ONTOP/$OUTPUT_ONTOP_FILE_NAME"   \
                                                      connection="$SI/$CONNEC_FILE_NAME"               \
                                                      log_level="$ONTOP_LOG_LEVEL"                     \
+						     must_not_be_empty="$MUST_NOT_BE_EMPTY_NODES"     \
                                                      "$ONTOP_NOT_OUT_ONTOLOGY" "$ONTOP_OUT_ONTOLOGY"  \
-						     "$MUST_NOT_BE_EMPTY_NODES"                       \
-                                                     "$ONTOP_DEBUG" 
+						     "$ONTOP_DEBUG" 
                         
                 CURRENT_DATE_TIME_SHARED=`date +%d_%m_%Y__%H_%M_%S`
                     
@@ -1167,8 +1163,8 @@
                                                       output=$OUTPUT_ONTOP/$OUTPUT_ONTOP_FILE_NAME    \
                                                       connection="$SI/$CONNEC_FILE_NAME"              \
                                                       log_level="$ONTOP_LOG_LEVEL"                    \
+						      must_not_be_empty="$MUST_NOT_BE_EMPTY_NODES"    \
                                                       "$ONTOP_NOT_OUT_ONTOLOGY" "$ONTOP_OUT_ONTOLOGY" \
-                                                      "$MUST_NOT_BE_EMPTY_NODES"                      \
                                                       "$ONTOP_DEBUG"
                                                    
             
