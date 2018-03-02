@@ -59,7 +59,9 @@
                                                  SET_DEFAULT_PREFIX="OK"
                     ;;                    
                     ("connecFileName")           CONNEC_FILE_NAME=$VALUE
-                    ;;                    
+                    ;;  
+                    ("connecFile")               CONNEC_FILE=$VALUE
+                    ;;  
                     ("csvFileName")              CSV_FILE_NAME=$VALUE
                     ;;
                     ("csvFile")                  CSV_FILE=$VALUE
@@ -82,7 +84,7 @@
                esac
          ;;
          help)  echo
-                echo " Total Arguments : Eighteen                                                                                          "
+                echo " Total Arguments : Nineteen                                                                                          "
                 echo 
                 echo "   input=                     :  Folder containing Modelization ( graphs )                                           "
                 echo "   output=                    :  Output Mapping FOlder                                                               "
@@ -91,9 +93,10 @@
                 echo "   column=                    :  Discriminator Column                                                                "
                 echo "   prefixFile=                :  Prefix File Path                                                                    "
                 echo "   defaultPrefix=             :  Default Prefix ( if not indicated in the graph )                                    "
-                echo "   connecFileName=            :  Connection file                                                                     "
-                echo "   csvFile                    :  CSV File Path                                                                       "
-                echo "   csvFileName                :  CSV File Name  ( Default path is used ../SI/[THE_SI]/csv/[csvFileName])             "
+                echo "   connecFile=                :  Connection file Path                                                                "
+                echo "   connecFileName=            :  Connection file Name                                                                "
+                echo "   csvFile=                   :  CSV File Path                                                                       "
+                echo "   csvFileName=               :  CSV File Name  ( Default path is used ../SI/[THE_SI]/csv/[csvFileName])             "
                 echo "   prf=                       :  Property file App configuration                                                     "
                 echo "   js=                        :  JS File                                                                             "
                 echo "   includeGraphVariable=      :  Treat Variables indicated in Graph. Ex : include_graph_variable=-ig                 "
@@ -147,9 +150,12 @@
   else
      DEFAULT_PREFIX=${DEFAULT_PREFIX:-"oboe-core"}
   fi
-    
-  CONNEC_FILE_NAME=${CONNEC_FILE_NAME:-"connection.txt"}  
-  CONNEC_FILE=${CONNEC_FILE:-"$SI/$CONNEC_FILE_NAME"}  
+ 
+  if [ ! -z "$CONNEC_FILE_NAME" ] ; then
+     if [ -z "$CONNEC_FILE" ] ; then
+        CONNEC_FILE=" $SI/$CONNEC_FILE_NAME "
+     fi
+  fi 
 
   # CSV_FILE_NAME=${CSV_FILE_NAME:-"pipeline_si.csv"}
 
@@ -231,6 +237,14 @@
   echo -e " ##  MAGIC_FILTER  : $MAGIC_FILTER_FILE          "
   fi
   echo
+  
+  if [ -z "$CONNEC_FILE" ] ; then   
+  echo -e " ##  CONNEC_FILE   : ---                         "
+  else 
+  echo -e " ##  CONNEC_FILE   : $CONNEC_FILE                "
+  fi
+  echo
+  
   echo -e " ##  DEF_PREFIX    : $DEFAULT_PREFIX             "
   echo -e " ##  PRED_PAT_CNTX : $PREDICATE_PATTERN_CONTEXT  "
   echo
