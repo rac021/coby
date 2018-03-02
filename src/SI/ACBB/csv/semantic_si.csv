@@ -3,7 +3,7 @@ air carbon dioxide  molar fraction;meteorology, carbon cycle;atmosphere, air;;ca
 air water vapour molar fraction;meteorology, water cycle;atmosphere, air;;water;;molar fraction;;half-hourly average;;millimole per mole;H2O;Flux tours
 atmospheric air  stability parameter;meteorology, surface energy balance;atmosphere;;air;;stability parameter;;half-hourly average;;unitless;ZL;Flux tours
 net carbon dioxide  flux density above the ecosystem;surface flux, carbon cycle;top of ecosystem;;carbon dioxyde;;mass flux density;;half-hourly average;;micromole per meter squared per second;Fc;Flux tours
-net carbon dioxide  flux density above the ecosystem;surface flux, carbon cycle;top of ecosystem;;carbon dioxyde;;molar flux density;gapfilled;half-hourly average;;micromole per meter squared and per second;Fc gf;Flux tours
+net carbon dioxide  flux density above the ecosystem;surface flux, carbon cycle;top of ecosystem;;carbon dioxyde;;molar flux density;gapfilled;half-hourly average;;micromole per meter squared per second;Fc gf;Flux tours
 sensible heat energy flux density;surface flux, surface energy balance;top of ecosystem;;sensible heat;;energy flux density;;half-hourly average;;watt per meter squared;H;Flux tours
 latent heat energy flux density;surface flux, surface energy balance;top of ecosystem;;latent heat;;energy flux density;;half-hourly average;;watt per meter squared;LE;Flux tours
 air momentum flux density;surface flux, Atmospheric convection;atmosphere, air;;momentum;;momentum flux density;;half-hourly average;;kilogram per meter per second squared;t;Flux tours
