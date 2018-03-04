@@ -84,27 +84,27 @@
                esac
          ;;
          help)  echo
-                echo " Total Arguments : Nineteen                                                                                          "
+                echo " Total Arguments : Nineteen                                                                                           "
                 echo 
-                echo "   input=                     :  Folder containing Modelization ( graphs )                                           "
-                echo "   output=                    :  Output Mapping FOlder                                                               "
-                echo "   ext=                       :  Extension of Graphs                                                                 "
-                echo "   class=                     :  Discriminator class                                                                 "
-                echo "   column=                    :  Discriminator Column                                                                "
-                echo "   prefixFile=                :  Prefix File Path                                                                    "
-                echo "   defaultPrefix=             :  Default Prefix ( if not indicated in the graph )                                    "
-                echo "   connecFile=                :  Connection file Path                                                                "
-                echo "   connecFileName=            :  Connection file Name                                                                "
-                echo "   csvFile=                   :  CSV File Path                                                                       "
-                echo "   csvFileName=               :  CSV File Name  ( Default path is used ../SI/[THE_SI]/csv/[csvFileName])             "
-                echo "   prf=                       :  Property file App configuration                                                     "
-                echo "   js=                        :  JS File                                                                             "
-                echo "   includeGraphVariable=      :  Treat Variables indicated in Graph. Ex : includeGraphVariable=-ig                   "
-                echo "   predicat_pattern_context=  :  used for pattern context entities: Ex : predicat_pattern_context=oboe-core:ofEntity "
-                echo "   magicFilterFile=           :  Magic filter file. Ex : magicFilterFile=my_magic_filter.txt                         "
-                echo "   version=                   :  ONTOP Version. Ex : version=V1                                                      "
-                echo '   match_word=                :  used to filter csv file lines. Ex : match_word=" variable1 , variable2 "            '
-                echo '   match_column=              :  used to indicates the column for match_word. Ex : match_column=2                    '
+                echo "   input=                     :  Folder containing Modelization ( graphs )                                            "
+                echo "   output=                    :  Output Mapping FOlder                                                                "
+                echo "   ext=                       :  Extension of Graphs                                                                  "
+                echo "   class=                     :  Discriminator class                                                                  "
+                echo "   column=                    :  Discriminator Column                                                                 "
+                echo "   prefixFile=                :  Prefix File Path                                                                     "
+                echo "   defaultPrefix=             :  Default Prefix ( if not indicated in the graph )                                     "
+                echo "   connecFile=                :  Connection file Path                                                                 "
+                echo "   connecFileName=            :  Connection file Name                                                                 "
+                echo "   csvFile=                   :  CSV File Path                                                                        "
+                echo "   csvFileName=               :  CSV File Name  ( Default path is used ../SI/[THE_SI]/csv/[csvFileName])              "
+                echo "   prf=                       :  Property file App configuration                                                      "
+                echo "   js=                        :  JS File                                                                              "
+                echo "   includeGraphVariable=      :  Treat Variables indicated in Graph. Ex : includeGraphVariable=-ig                    "
+                echo "   predicat_pattern_context=  :  used for pattern context entities:  Ex : predicat_pattern_context=oboe-core:ofEntity "
+                echo "   magicFilterFile=           :  Magic filter file. Ex : magicFilterFile=my_magic_filter.txt                          "
+                echo "   version=                   :  ONTOP Version.     Ex : version=V1                                                   "
+                echo '   match_word=                :  used to filter csv file lines. Ex : match_word=" variable1 , variable2 "             '
+                echo '   match_column=              :  used to indicates the column for match_word. Ex : match_column=2                     '
                 echo
                 EXIT ;
      esac
