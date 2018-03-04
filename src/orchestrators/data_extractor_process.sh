@@ -742,6 +742,7 @@
     if [  -f "$FULL_PATH_VALIDATE_CSV_FILE" ] ; then
       echo
       echo -e "\e[91m --> remove the file : $FULL_PATH_VALIDATE_CSV_FILE \e[39m"
+      rm -f "$FULL_PATH_VALIDATE_CSV_FILE"
       echo
     fi 
     
