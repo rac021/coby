@@ -99,7 +99,7 @@
                 echo "   csvFileName=               :  CSV File Name  ( Default path is used ../SI/[THE_SI]/csv/[csvFileName])             "
                 echo "   prf=                       :  Property file App configuration                                                     "
                 echo "   js=                        :  JS File                                                                             "
-                echo "   includeGraphVariable=      :  Treat Variables indicated in Graph. Ex : include_graph_variable=-ig                 "
+                echo "   includeGraphVariable=      :  Treat Variables indicated in Graph. Ex : includeGraphVariable=-ig                   "
                 echo "   predicat_pattern_context=  :  used for pattern context entities: Ex : predicat_pattern_context=oboe-core:ofEntity "
                 echo "   magicFilterFile=           :  Magic filter file. Ex : magicFilterFile=my_magic_filter.txt                         "
                 echo "   version=                   :  ONTOP Version. Ex : version=V1                                                      "
