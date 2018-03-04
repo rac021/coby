@@ -729,18 +729,25 @@
     OUTPUT_CORESE="$SI/output/03_corese/"
 
     SI_FILE="$SI/csv/$CSV_FILE_NAME"
-    
-    FULL_PATH_VALIDATE_CSV_FILE="$SI/csv/$VALIDE_CSV_FILE_NAME"
-    # OUTPUT TEMP VALIDE CSV
-    FULL_PATH_VALIDATE_CSV_FILE_TEMP="$WORK_TMP/$VALIDE_CSV_FILE_NAME"
-    
-        
-    if [ ! -f $SI_FILE ]; then
+
+    if [ ! -f "$SI_FILE" ] ; then
       echo
       echo -e "\e[91m --> CSV not found at path : $SI_FILE ! Abort \e[39m"
       echo
       EXIT
     fi
+    
+    FULL_PATH_VALIDATE_CSV_FILE="$SI/csv/$VALIDE_CSV_FILE_NAME"
+    
+    if [  -f "$FULL_PATH_VALIDATE_CSV_FILE" ] ; then
+      echo
+      echo -e "\e[91m --> remove the file : $FULL_PATH_VALIDATE_CSV_FILE \e[39m"
+      echo
+    fi 
+    
+    # OUTPUT TEMP VALIDE CSV
+    FULL_PATH_VALIDATE_CSV_FILE_TEMP="$WORK_TMP/$VALIDE_CSV_FILE_NAME"           
+
 	
     chmod -R +x $SCRIPT_PATH/*
         
