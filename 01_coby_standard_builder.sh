@@ -233,6 +233,10 @@ fi
    echo 
    echo 
    echo " ###  Before you start using COBY, be sure to provide your 'ORCHESTRATORS' and 'SI' folders ### "
+   echo
+   echo " ###  Example of 'ORCHESTRATORS' & 'SI' : ###                                    "
+   echo "       --> SI            :  cp -r src/SI/ coby_standard_bin/pipeline/            "   
+   echo "       --> ORCHESTRATORS :  cp -r src/orchestrators/ coby_standard_bin/pipeline/ "
    sleep 1
    tput setaf 7
    
