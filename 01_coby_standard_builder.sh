@@ -233,9 +233,12 @@ fi
    echo 
    echo " ###  Before you start using COBY, be sure to provide your 'ORCHESTRATORS' and 'SI' folders ### "
    echo
-   echo " ###  Example of 'ORCHESTRATORS' & 'SI' : ###                                    "
-   echo "       --> SI            :  cp -r src/SI/ coby_standard_bin/pipeline/            "   
-   echo "       --> ORCHESTRATORS :  cp -r src/orchestrators/ coby_standard_bin/pipeline/ "
+   echo " ###  Example of 'ORCHESTRATORS' ( use_cases ) & 'SI' ( modelizations ) : ###      "
+   echo "       --> SI            :  cp -r src/SI/ coby_standard_bin/pipeline/              "   
+   echo "       --> ORCHESTRATORS :  cp -r src/orchestrators/ coby_standard_bin/pipeline/   "
+   echo 
+   echo " ###  Example of Running The 'synthesis_extractor' ORCHESTRATORS :  ###            "
+   echo "       --> ./coby_standard_bin/pipeline/orchestrators/synthesis_extractor_entry.sh " 
    sleep 1
    tput setaf 7
    
