@@ -7,7 +7,6 @@
   # 5 - PRF=                    : Default : SI/csv/config/si.properties
   # 6 - JS=                     : Default : SI/csv/config/si.js
   # 7 - INCLUDE_GRAPH_VARIABLES : Default : "".  -ig : Treat only listed variables in graph
-
   
   EXIT() {
    if [ $PPID = 0 ] ; then exit ; fi
