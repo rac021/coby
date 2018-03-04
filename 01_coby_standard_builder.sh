@@ -62,7 +62,6 @@ fi
    
  fi
 
-
  if [ "$1" = "-i" ] && [ "$2" = "coby" -o "$3" = "coby" ] ; then 
 
    mkdir -p  $COBY_BINARY  
@@ -245,3 +244,4 @@ fi
  echo 
  echo " Done !"
  echo 
+
