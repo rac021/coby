@@ -409,6 +409,9 @@
     ## COBY ORCHESTRATOR ##
     #######################
     
+    TOTAL_ARGS=0
+    MINIMUM_REQUIRED_ARGS=2
+    
     if [[ "$1" == "-i" ]] ; then 
        CALL_COBY "$1" "$2"   
        EXIT
@@ -418,9 +421,7 @@
        echo
        EXIT
     fi
-  
-    $SCRIPT_PATH/utils/check_commands.sh java curl psql-mysql mvn awk gawk
-  
+    
     if [[ ! -d  "$OUTPUT_ROOT"  ]] ; then
       mkdir -p "$OUTPUT_ROOT" 
     else 
@@ -439,7 +440,6 @@
     CLASS_VALUES="$RESULT"
    
     if [[ -z "$CLASS_VALUES" ]] ; then
-       echo 
        echo " --> Search and Apply all Class values "
        echo
        CLASS_VALUES=$( EXTRACT_ALL_CLASS '../SI' )
@@ -449,6 +449,8 @@
            echo " The process will EXIT "
            EXIT
        fi
+    else 
+       TOTAL_ARGS=$[$TOTAL_ARGS +1]
     fi
     
     TO_ARRAY "$RESULT" ";"
@@ -466,7 +468,39 @@
           echo " The process will EXIT "
           EXIT   
       fi
+    else 
+       TOTAL_ARGS=$[$TOTAL_ARGS +1]
     fi
+    
+    EXTRACT_VALUES_FROM_LINE "variables" "$QUERY"  
+    VARIABLES="$RESULT"
+    if [[ ! -z "$VARIABLES" ]] ; then
+       TOTAL_ARGS=$[$TOTAL_ARGS +1]  
+    fi
+    
+    EXTRACT_VALUES_FROM_LINE "category" "$QUERY"  
+    CATEGORIES="$RESULT"
+    if [[ ! -z "$CATEGORIES" ]] ; then
+       TOTAL_ARGS=$[$TOTAL_ARGS +1]  
+    fi
+    
+    
+    if [ $TOTAL_ARGS -lt $MINIMUM_REQUIRED_ARGS ] ; then
+         echo
+         echo " ============================================================                       "
+         echo
+         echo " MINIMUM_REQUIRED_ARGS not reached :                                                "
+         echo
+         echo "  -> MINIMUM Required ARGS : $MINIMUM_REQUIRED_ARGS                                 "
+         echo "  -> TOTAL Recieved ARGS   : $TOTAL_ARGS                                            "
+         echo "  -> Required ARGS ( $MINIMUM_REQUIRED_ARGS )   : SI , category , variables, CLASS  "
+         echo
+         echo " ============================================================                       "
+         echo 
+         EXIT
+    fi
+        
+    $SCRIPT_PATH/utils/check_commands.sh java curl psql-mysql mvn awk gawk
     
     for si in "${SELECTED_SI[@]}" ; do
        tput setaf 2
