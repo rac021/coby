@@ -13,6 +13,7 @@
      apt-get -y update                           && \
      apt-get -y install procps                   && \
      apt-get -y install curl                     && \
+     apt-get -y install locales                  && \
      apt-get clean  
 
  RUN mkdir /opt/coby
@@ -22,6 +23,13 @@
  RUN chown -R coby:coby /opt/coby/
 
  RUN chmod -R 777 /opt/coby/
+
+ RUN echo "fr_FR.UTF-8 UTF-8" > /etc/locale.gen && \
+     locale-gen fr_FR.UTF-8                     && \
+     dpkg-reconfigure locales                   && \
+    /usr/sbin/update-locale LANG=fr_FR.UTF-8
+
+ ENV LC_ALL fr_FR.UTF-8
 
  USER coby 
 
