@@ -300,7 +300,8 @@
 
  # BUILD DOCKER IMAGE 
  docker build -t coby . 
-
+ echo
  echo "Done !"
-
+ echo
+ 
 
