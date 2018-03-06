@@ -299,7 +299,7 @@
  rm -rf $MAVEN_REPO_PATH
 
  # BUILD DOCKER IMAGE 
- docker build -t coby . 
+ docker build --no-cache -t coby . 
  echo
  echo "Done !"
  echo
