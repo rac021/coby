@@ -16,6 +16,7 @@ import java.util.logging.Logger ;
 import org.apache.http.HttpResponse ;
 import org.apache.http.nio.IOControl ;
 import java.awt.datatransfer.Clipboard ;
+import java.nio.charset.StandardCharsets ;
 import org.apache.http.entity.ContentType ;
 import java.util.concurrent.CountDownLatch ;
 import com.rac021.client.security.ICryptor ;
@@ -240,7 +241,8 @@ public class Model {
 
             @Override
             protected void onCharReceived(final CharBuffer buf, final IOControl ioctrl) throws IOException {
-                out.write(buf.toString() ) ;
+                out.write( new String ( buf.toString().getBytes( StandardCharsets.ISO_8859_1 ) , 
+                           StandardCharsets.UTF_8                                            ) ) ;
                 buf.clear() ;
             }
 
