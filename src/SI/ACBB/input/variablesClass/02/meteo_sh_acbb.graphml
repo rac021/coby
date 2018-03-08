@@ -1368,7 +1368,7 @@ WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.affichage) = LOWER(?VA
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-              <y:BorderInsets bottom="16" bottomF="15.597775969832583" left="0" leftF="4.547473508864641E-13" right="13" rightF="12.593010674601828" top="0" topF="0.0"/>
+              <y:BorderInsets bottom="19" bottomF="19.219349501418037" left="0" leftF="4.547473508864641E-13" right="13" rightF="12.593010674601828" top="5" topF="4.5269669144820455"/>
             </y:GroupNode>
             <y:GroupNode>
               <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
@@ -1387,10 +1387,11 @@ WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.affichage) = LOWER(?VA
         <node id="n41::n0">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="185.76741931990568" width="1206.6527885666183" x="-3432.356593270603" y="-1689.5952004690878"/>
+              <y:Geometry height="221.3035844447536" width="1206.6527885666183" x="-3432.356593270603" y="-1708.1375514002023"/>
               <y:Fill color="#9985E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="187.59375" modelName="custom" textColor="#000000" visible="true" width="1206.6527885666183" x="0.0" y="-0.9131653400468167">?META_VARIABLE ##META_PATTERN_CONTEXT COLUMN_4 
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="201.5625" modelName="custom" textColor="#000000" visible="true" width="1206.6527885666183" x="0.0" y="9.870542222377026">?META_VARIABLE ##META_PATTERN_CONTEXT COLUMN_4 
+{ ?VARIABLE_ENTITY=COLUMN_4 } 
 { ?VAR_ENTITY_URI=COLUMN_4 } 
 { ?UNIT_STANDARD_NAME_GRAPH = COLUMN_10 } 
 { ?DATATYPE_SQL='COLUMN_12' } 
@@ -1416,10 +1417,10 @@ WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.affichage) = LOWER(?VA
         <node id="n41::n1">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="306.1765184849405" x="-3414.3944031898286" y="-1873.5271836958132"/>
+              <y:Geometry height="30.0" width="306.1765184849405" x="-3432.356593270603" y="-1869.0002167813311"/>
               <y:Fill color="#00FFFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="287.822265625" x="9.17712642997003" y="6.015625">Note : Do not touch ?ENTITY &amp; ?VARIABLE<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="264.35546875" x="20.91052486747003" y="6.015625">Note : Do not touch ?CONTEXT_ENTITY<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -1433,11 +1434,11 @@ WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.affichage) = LOWER(?VA
         <node id="n41::n2">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="56.75012667909914" width="1206.6527885666183" x="-3432.356593270603" y="-1473.827781149182"/>
+              <y:Geometry height="46.790799467238685" width="1206.6527885666183" x="-3432.356593270603" y="-1467.490027468907"/>
               <y:Fill color="#9985E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.9375" modelName="custom" textColor="#000000" visible="true" width="1206.6527885666183" x="0.0" y="11.40631333954957">Maqic_Filter :  (163841, 1, 1445, 124 ) { rootsite.rootzet_id &amp; Q_200, Q_201, Q_202  } { Q_50, Q_25, Q_102 &amp; rootzet_idd } PEEK 2 ;
-1900_2015 { EXTRACT( YEAR FROM mfs_date) &amp; Q_200, Q_201, Q_202 } STEP 10Y<y:LabelModel>
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.9375" modelName="custom" textColor="#000000" visible="true" width="1206.6527885666183" x="0.0" y="6.426649733619342">!##Magic_Filter :  (163841, 1, 1445, 124 ) { rootsite.rootzet_id &amp; 200, 201, 202  } { rootzet_idd  &amp; 50, 25, 102 } PEEK 2 ;
+1900_2015 { EXTRACT( YEAR FROM mfs_date) &amp; 200, 201, 202 } STEP 10Y<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -1451,7 +1452,7 @@ WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.affichage) = LOWER(?VA
         <node id="n41::n3">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="1206.6527885666183" x="-3432.356593270603" y="-1785.113152294362"/>
+              <y:Geometry height="30.0" width="1206.6527885666183" x="-3432.356593270603" y="-1813.5271836958132"/>
               <y:Fill color="#FFFF99" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="left" autoSizePolicy="node_width" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="1206.6527885666183" x="0.0" y="6.015625">##META_PATTERN_CONTEXT 20 acbb/observation/?CONTEXT_ENTITY/{site_id} oboe-core:hasContext [ oboe-core:Observation_:COLUMN_2 Q_200_201_202 ] <y:LabelModel>
@@ -1468,7 +1469,7 @@ WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.affichage) = LOWER(?VA
         <node id="n41::n4">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="1206.6527885666183" x="-3432.356593270603" y="-1737.3541763817248"/>
+              <y:Geometry height="30.0" width="1206.6527885666183" x="-3432.356593270603" y="-1768.1375514002023"/>
               <y:Fill color="#00FF00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="left" autoSizePolicy="node_width" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="1206.6527885666183" x="0.0" y="6.015625">##META_PATTERN_PARALLEL Measurement(8) usesStandard :Anaee-franceVariableCategoryNamingStandard ; ofCharacteristic oboe-core:Name ; hasValue ?CATEGORY_STANDARD_NAME_PATTERN<y:LabelModel>

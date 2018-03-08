@@ -513,7 +513,7 @@
           <y:Geometry height="33.80435154400328" width="151.44306918882376" x="-3899.000593049665" y="340.35855610073924"/>
           <y:Fill color="#FF9900" transparent="false"/>
           <y:BorderStyle color="#FF0000" type="line" width="2.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#FFFFFF" visible="true" width="133.82421875" x="8.809425219411878" y="9.081863272001641">##PATTERN_PARALLEL<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="15.640625" modelName="custom" textColor="#FFFFFF" visible="true" width="133.82421875" x="8.809425219411878" y="9.081863272001613">##PATTERN_PARALLEL<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -831,7 +831,7 @@
               <y:Geometry height="30.0" width="612.5561041356136" x="-3282.017309352562" y="-1987.514323234364"/>
               <y:Fill color="#99CC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="418.1875" x="97.18430206780658" y="6.015625">(52) foret/measurement/TimeInstant/endTime/{dty_id}/{mesure_id}<y:LabelModel>
+              <y:NodeLabel alignment="right" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="418.1875" x="97.18430206780704" y="6.015625">(52) foret/measurement/TimeInstant/endTime/{dty_id}/{mesure_id}<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -952,14 +952,14 @@
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="434.21015823354196" width="1281.6769880060244" x="-3314.9794994333374" y="-1692.3716111942185"/>
+              <y:Geometry height="437.1125985187948" width="1281.676988006024" x="-3314.979499433337" y="-1692.3716111942185"/>
               <y:Fill color="#F5F5F5" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="1281.6769880060244" x="0.0" y="0.0">Variable(s)    </y:NodeLabel>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.4609375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="1281.676988006024" x="0.0" y="0.0">Variable(s)    </y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-              <y:BorderInsets bottom="16" bottomF="15.694729708758814" left="0" leftF="0.0" right="9" rightF="9.282600696026066" top="0" topF="0.0"/>
+              <y:BorderInsets bottom="7" bottomF="7.119598239489733" left="0" leftF="0.0" right="9" rightF="9.282600696026066" top="0" topF="0.0"/>
             </y:GroupNode>
             <y:GroupNode>
               <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
@@ -978,10 +978,11 @@
         <node id="n40::n0">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="195.75761942949475" width="1242.3943873099975" x="-3299.979499433337" y="-1484.6138020989301"/>
+              <y:Geometry height="219.01944784262264" width="1242.3943873099975" x="-3299.979499433337" y="-1496.398058757536"/>
               <y:Fill color="#9985E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="187.59375" modelName="custom" textColor="#000000" visible="true" width="1242.3943873099975" x="-4.547473508864641E-13" y="4.081934714747604">?META_VARIABLE ##META_PATTERN_CONTEXT COLUMN_4 
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="215.53125" modelName="custom" textColor="#000000" visible="true" width="1242.3943873099975" x="0.0" y="1.7440989213116609">?META_VARIABLE ##META_PATTERN_CONTEXT COLUMN_4 
+{ ?VARIABLE_ENTITY=COLUMN_4 } 
 { ?VAR_ENTITY_URI=COLUMN_4 } 
 { ?UNIT_STANDARD_NAME_GRAPH = COLUMN_10 } 
 { ?DATATYPE_SQL='COLUMN_12' } 
@@ -992,6 +993,7 @@
 { ?CHAR_QUALIFIER_NAME_URI=COLUMN_8 }
 { ?QUALIFIER_NAME_GRAPH= COLUMN_8 }
 { ?PROTOCOL_NAME_GRAPH= COLUMN_7 }
+
 &amp;&amp; ##META_PATTERN_PARALLEL 
 { ?CATEGORY_STANDARD_NAME_URI=COLUMN_1} { ?CATEGORY_STANDARD_NAME_PATTERN=COLUMN_1 } <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
@@ -1007,7 +1009,7 @@
         <node id="n40::n1">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="1242.3943873099975" x="-3299.9794994333365" y="-1544.6138020989301"/>
+              <y:Geometry height="30.0" width="1242.3943873099975" x="-3299.979499433337" y="-1550.7864997628612"/>
               <y:Fill color="#00FF00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="left" autoSizePolicy="node_width" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="1242.3943873099975" x="0.0" y="6.015625">##META_PATTERN_PARALLEL Measurement(8) usesStandard :Anaee-franceVariableCategoryNamingStandard ; ofCharacteristic oboe-core:Name ; hasValue ?CATEGORY_STANDARD_NAME_PATTERN<y:LabelModel>
@@ -1027,7 +1029,7 @@
               <y:Geometry height="30.0" width="1242.3943873099975" x="-3299.9794994333365" y="-1598.441104434999"/>
               <y:Fill color="#FFFF99" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="1242.3943873099975" x="0.0" y="6.015625">##META_PATTERN_CONTEXT 20 foret/observation/?CONTEXT_ENTITY/{site_id} oboe-core:hasContext [ oboe-core:Observation_:COLUMN_2 Q_200_201_202 ] <y:LabelModel>
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#0000FF" visible="true" width="1242.3943873099975" x="-4.547473508864641E-13" y="6.015625">##META_PATTERN_CONTEXT 20 foret/observation/?CONTEXT_ENTITY/{site_id} oboe-core:hasContext [ oboe-core:Observation_:COLUMN_2 Q_200_201_202 ] <y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -1044,7 +1046,7 @@
               <y:Geometry height="30.0" width="306.1765184849405" x="-3299.9794994333365" y="-1655.9106736942185"/>
               <y:Fill color="#00FFFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="287.822265625" x="9.177126429970485" y="6.015625">Note : Do not touch ?ENTITY &amp; ?VARIABLE<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="264.35546875" x="20.91052486747003" y="6.015625">Note : Do not touch ?CONTEXT_ENTITY<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -1192,7 +1194,7 @@ WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL) AND LOWER(var.nom) = LOWER(?VARIABLE
               <y:Geometry height="379.87399071282516" width="865.344076729257" x="-5039.070693623328" y="-3785.6625497738755"/>
               <y:Fill color="#99CC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="355.21875" modelName="custom" textColor="#000000" visible="true" width="865.344076729257" x="0.0" y="12.327620356412808">Query_(1): SELECT dt.id AS dty_id, var.id AS var_id , mfs.mfs_id AS mesure_id, vfs.id_valeur AS value_id, rootsite.rootzet_id AS site_id
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="355.21875" modelName="custom" textColor="#000000" visible="true" width="865.344076729257" x="0.0" y="12.327620356412353">Query_(1): SELECT dt.id AS dty_id, var.id AS var_id , mfs.mfs_id AS mesure_id, vfs.id_valeur AS value_id, rootsite.rootzet_id AS site_id
 FROM public.datatype dt  INNER JOIN public.datatype_unite_variable_foret_vdt dtvu ON dt.id = dtvu.dty_id
 INNER JOIN public.variable_foret var ON dtvu.var_id = var.id
 INNER JOIN public.valeurs_flux_tour_vfs vfs ON var.id = vfs.id
@@ -1233,7 +1235,7 @@ AND rootsite.rootzet_id IN (163841) AND EXTRACT(YEAR FROM mfs_date)=2004 AND mfs
               <y:Geometry height="379.87399071282516" width="734.460283190353" x="-4131.843840917577" y="-3785.6625497738755"/>
               <y:Fill color="#99CC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="369.1875" modelName="custom" textColor="#000000" visible="true" width="734.460283190353" x="0.0" y="5.343245356412808">Query_(2): SELECT dt.id AS dty_id, vfs.id_valeur AS value_id, vfs.vfs_valeur AS value
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="369.1875" modelName="custom" textColor="#000000" visible="true" width="734.460283190353" x="0.0" y="5.343245356412353">Query_(2): SELECT dt.id AS dty_id, vfs.id_valeur AS value_id, vfs.vfs_valeur AS value
 FROM public.datatype dt  INNER JOIN public.datatype_unite_variable_foret_vdt dtvu ON dt.id = dtvu.dty_id 
 INNER JOIN public.variable_foret var ON dtvu.var_id = var.id
 INNER JOIN public.valeurs_flux_tour_vfs vfs ON var.id = vfs.id
@@ -1315,7 +1317,7 @@ AND rootsite.rootzet_id IN (163841) AND EXTRACT(YEAR FROM mfs_date)=2004 AND mfs
               <y:Geometry height="100.11118917702856" width="490.05220758007135" x="-3887.4357653072952" y="-1633.4966990235134"/>
               <y:Fill color="#99CC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="47.90625" modelName="custom" textColor="#000000" visible="true" width="490.05220758007135" x="0.0" y="26.102469588514168">Query_(53): SELECT dt.id AS dty_id, dt.code AS dty_code
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="47.90625" modelName="custom" textColor="#000000" visible="true" width="490.05220758007135" x="4.547473508864641E-13" y="26.102469588514396">Query_(53): SELECT dt.id AS dty_id, dt.code AS dty_code
 FROM public.datatype dt
 WHERE LOWER(dt.name) = LOWER(?DATATYPE_SQL)<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
@@ -1452,7 +1454,7 @@ AND rootsite.rootzet_id IN (163841) AND EXTRACT(YEAR FROM mfs_date)=2004 AND mfs
               <y:Geometry height="379.87399071282516" width="765.1965383167528" x="-5039.070693623328" y="-2494.479173944485"/>
               <y:Fill color="#99CC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="369.1875" modelName="custom" textColor="#000000" visible="true" width="765.1965383167528" x="0.0" y="5.343245356412808">Query_(202): SELECT DISTINCT rootsite.rootzet_id AS site_id
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="369.1875" modelName="custom" textColor="#000000" visible="true" width="765.1965383167528" x="0.0" y="5.343245356412353">Query_(202): SELECT DISTINCT rootsite.rootzet_id AS site_id
 FROM public.datatype dt  INNER JOIN public.datatype_unite_variable_foret_vdt dtvu ON dt.id = dtvu.dty_id
 INNER JOIN public.variable_foret var ON dtvu.var_id = var.id
 INNER JOIN public.valeurs_flux_tour_vfs vfs ON var.id = vfs.id
@@ -1534,7 +1536,7 @@ AND rootsite.rootzet_id IN (163841) AND EXTRACT(YEAR FROM mfs_date)=2004 AND mfs
               <y:Geometry height="364.15059323555533" width="734.4602831903521" x="-4131.843840917576" y="-2893.678546856846"/>
               <y:Fill color="#99CC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="369.1875" modelName="custom" textColor="#000000" visible="true" width="734.4602831903521" x="0.0" y="-2.5184533822225603">Query_(201): SELECT DISTINCT rootsite.rootzet_id AS site_id
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="369.1875" modelName="custom" textColor="#000000" visible="true" width="734.4602831903521" x="0.0" y="-2.5184533822221056">Query_(201): SELECT DISTINCT rootsite.rootzet_id AS site_id
 FROM public.datatype dt  INNER JOIN public.datatype_unite_variable_foret_vdt dtvu ON dt.id = dtvu.dty_id
 INNER JOIN public.variable_foret var ON dtvu.var_id = var.id
 INNER JOIN public.valeurs_flux_tour_vfs vfs ON var.id = vfs.id
