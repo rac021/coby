@@ -65,11 +65,21 @@
   SI=$(head -1 $SELECTED_SI)   
         
   if [ "$SI" == "" ] ; then  
-       _DATA_DIR="$PARENT_DIR/SI/output/03_corese/"         
-  else    
-       _DATA_DIR="$SI/output/03_corese/"
-  fi
   
+      if [ ! -d "../SI/output/03_corese/" ] ; then 
+      
+           echo
+           echo " You have to specify a Directory before loading datas ..       "
+           echo " The default Directory [../SI/output/03_corese/] was not found " 
+           echo
+           EXIT            
+      fi
+      
+  else
+  
+       _DATA_DIR="$SI/output/03_corese/"
+  
+  fi  
   
   DATA_DIR=${DATA_DIR:-$_DATA_DIR}
     
