@@ -13,7 +13,7 @@
 
   localSiteName := ( '?localSiteName' ) { site.nom & 1 }  PEEK 100 ;
  
-  year          :=  ( '?year' ) { EXTRACT( YEAR FROM temp.date::date ) & 56 }  STEP 50 ; 
+  year          :=  ( '?year' ) { EXTRACT( YEAR FROM temp.date::date ) & 56 }  { EXTRACT( YEAR FROM date_prelevement::date ) & 1 }  STEP 50 ; 
 
   -- localVariableName := ( '?localVariableName') { var.nom  & 1, 200, 201, 202, 50, 51, 53, 55 } {  var2.nom  & 2 } PEEK 100 ;
  
