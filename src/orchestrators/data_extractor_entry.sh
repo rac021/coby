@@ -8,6 +8,8 @@
 
     CURRENT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
     cd $CURRENT_PATH
+    
+    DOI_PATH="/var/doi-nfs-export"
 
     ################################################################
     # Arbo SI Configuration Ex
@@ -135,7 +137,7 @@
     RESERVED_PARAMETERS_WORDS="CLASS , SI, CSV, SELECT_VARS"
 
     DATE_AS_TOKEN=`date +%d_%m_%Y__%H_%M_%S`    
-    OUTPUT_ROOT="../DOI/$LOGIN/$DATE_AS_TOKEN" 
+    OUTPUT_ROOT="$DOI_PATH/$LOGIN/$DATE_AS_TOKEN" 
 
     SI_PATH="SI" 
    
