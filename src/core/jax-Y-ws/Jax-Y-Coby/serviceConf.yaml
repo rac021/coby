@@ -68,7 +68,7 @@ authentication : # using HTTP
 #################################
 
 IP         : localhost 
-HTTP_PORT  : 8080      
+HTTP_PORT  : 8181      
 HTTPS_PORT : 8443      
 TRANSPORT  : HTTP  # HTTPS 
 SELF_SSL   : TRUE  # FALSE 
