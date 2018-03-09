@@ -16,6 +16,11 @@
      fi
   }  
   
+  GET_ABS_PATH() {
+    # $1 : relative filename
+    echo "$(cd "$(dirname "$1")" && pwd)/$(basename "$1")"
+  }
+  
    
   while [[ "$#" > "0" ]] ; do
      case $1 in
@@ -82,6 +87,7 @@
   fi  
   
   DATA_DIR=${DATA_DIR:-$_DATA_DIR}
+  DATA_DIR=$( GET_ABS_PATH $DATA_DIR )  
     
   CONTENT_TYPE=${CONTENT_TYPE:-"text/turtle"} # application/rdf+xml
      
@@ -220,7 +226,9 @@
    
   done 
   
-  rm $DATA_DIR/sparql
+  if [ -f "$DATA_DIR/sparql" ] ; then 
+     rm $DATA_DIR/sparql
+  fi
     
   # Content-Type: text/turtle
   # Content-Type: text/rdf+n3
