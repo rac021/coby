@@ -617,27 +617,19 @@
             
     done
         
-   # $SCRIPT_PATH/12_docker_nginx.sh stop
+    # $SCRIPT_PATH/12_docker_nginx.sh stop
 
     $SCRIPT_PATH/05_init_si_data.sh "-a" "-f"
-         
-    $SCRIPT_PATH/02_build_config.sh  ip=$IP_HOST namespace=$NAME_SPACE rw=$Read_Write_Port ro=$Read_Only_Port 
-         
-    $SCRIPT_PATH/11_nano_start_stop.sh start rw 12 12 28
-         
-    $SCRIPT_PATH/09_load_data.sh from_directory="$SI/output/04_synthesis/" content_type="text/turtle"
-         
-    $SCRIPT_PATH/11_nano_start_stop.sh stop
-                  
-    $SCRIPT_PATH/11_nano_start_stop.sh start ro 12 12 28
   
-   ## read -rsn1
+    ## read -rsn1
 
-  echo 
-  echo 
-  echo " COBY PIPELINE EXTRACTION FINISHED "
-  echo 
-  echo 
-
-
+    echo 
+    echo 
+    echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX "
+    echo
+    echo " COBY PIPELINE SYNTHESIS FINISHED FOR THE SI : $WhichSI "
+    echo
+    echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX "
+    echo 
+    echo 
 
