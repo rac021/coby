@@ -117,14 +117,20 @@ public class Writer {
     
     public static void removeDirectory(String directory) throws Exception {
      
-      Path rootPath = Paths.get(directory);
-      Files.walk(rootPath, FileVisitOption.FOLLOW_LINKS)
-           .sorted(Comparator.reverseOrder())
-           .map(Path::toFile)
-           .forEach(File::delete) ;
+      Path rootPath = Paths.get(directory)                      ;
       
-     if ( ! Files.exists(Paths.get(directory) , 
-          new LinkOption[]{ LinkOption.NOFOLLOW_LINKS}) )
-      Files.createDirectory(Paths.get(directory))       ;   
+      if ( Files.exists( rootPath, LinkOption.NOFOLLOW_LINKS) ) {
+
+        Files.walk(rootPath, FileVisitOption.FOLLOW_LINKS)
+             .sorted(Comparator.reverseOrder())
+             .map(Path::toFile)
+             .forEach(File::delete) ;
+        
+        if ( ! Files.exists(Paths.get(directory) , 
+             new LinkOption[]{ LinkOption.NOFOLLOW_LINKS}) )
+        Files.createDirectory(Paths.get(directory))        ; 
+
+      }
+      
     }
 }
