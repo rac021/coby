@@ -145,7 +145,7 @@
         SI_PATH="../SI" ;
     fi
 
-    if [ ! -d "$SI_PATHS" ]; then 
+    if [ ! -d "$SI_PATH" ]; then 
       echo  
       echo -e "\e[93m ERROR ### \e[32m "
       echo -e "\e[93m  =>> Missning Modelization. No [$SI_PATH] Folder Provided ### \e[32m "
