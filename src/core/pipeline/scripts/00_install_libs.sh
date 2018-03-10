@@ -307,7 +307,7 @@
  echo 	
  tput setaf 7
  echo -e "\e[90m ###  Before you start using COBY, be sure to provide your 'ORCHESTRATORS' and 'SI' folders ### \e[32m  "
- echo	 
+ echo 
  sleep 1	
 
  echo
