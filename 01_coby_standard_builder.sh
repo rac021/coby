@@ -225,25 +225,21 @@ fi
    rm -rf $TMP_COMPILATION_FOLDER
 
  fi
- 
- if [ "$2" = "jaxy" -o "$3" = "jaxy" ] ; then  ## Redisplay again the message ABOUT the ORCHESTRATORS
- 
-   tput setaf 2
-   echo 
-   echo 
-   echo " ###  Before you start using COBY, be sure to provide your 'ORCHESTRATORS' and 'SI' folders ### "
-   echo
-   echo " ###  Example of 'ORCHESTRATORS' ( use_cases ) & 'SI' ( modelizations ) : ###      "
-   echo "       --> SI            :  cp -r src/SI/ coby_standard_bin/pipeline/              "   
-   echo "       --> ORCHESTRATORS :  cp -r src/orchestrators/ coby_standard_bin/pipeline/   "
-   echo 
-   echo " ###  Example of Running The 'synthesis_extractor' ORCHESTRATORS :  ###            "
-   echo "       --> ./coby_standard_bin/pipeline/orchestrators/synthesis_extractor_entry.sh " 
-   sleep 1
-   tput setaf 7
-   
- fi
- 
+  
+ tput setaf 2
+ echo 
+ echo 
+ echo " ###  Before you start using COBY, be sure to provide your 'ORCHESTRATORS' and 'SI' folders ### "
+ echo
+ echo " ###  Example of 'ORCHESTRATORS' ( use_cases ) & 'SI' ( modelizations ) : ###      "
+ echo "       --> SI            :  cp -r src/SI/ coby_standard_bin/pipeline/              "   
+ echo "       --> ORCHESTRATORS :  cp -r src/orchestrators/ coby_standard_bin/pipeline/   "
+ echo 
+ echo " ###  Example of Running The 'synthesis_extractor' ORCHESTRATORS :  ###            "
+ echo "       --> ./coby_standard_bin/pipeline/orchestrators/synthesis_extractor_entry.sh " 
+ sleep 1
+ tput setaf 7
+
  echo 
  echo " Done !"
  echo 
