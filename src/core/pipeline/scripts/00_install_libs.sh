@@ -301,8 +301,14 @@
 
  rm -rf $ROOT_PATH/$DIRECTORY_LIBS/$TMP/
 
- sleep 1
- 
+ tput setaf 2	
+ echo 
+ echo " ###  Coby successfully installed ########## "	
+ echo 	
+ tput setaf 7
+ echo -e "\e[90m ###  Before you start using COBY, be sure to provide your 'ORCHESTRATORS' and 'SI' folders ### \e[32m  "
+ echo	 
+ sleep 1	
+
  echo
- 
  
