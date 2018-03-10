@@ -71,7 +71,6 @@
 
  GITHUB_BLZ_PROJECT="https://raw.githubusercontent.com/rac021/blazegraph_libs/master/blazegraph_2_1_4.jar"
 
-
  TMP="tmp_install"
  DOCS="Docs"
  EXAMPLES="Exemple"
