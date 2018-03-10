@@ -190,7 +190,7 @@
     # Merge works only if BATCH is ENABLE 
     ONTOP_MERGE="" # For Merge : "merge" 
     
-    ONTOP_LOG_LEVEL="OFF"
+    ONTOP_LOG_LEVEL="OFF" # ALL , DEBUG , INFO , TRACE , WARN , ERROR  ; 
         
     ONTOP_DEBUG="" # ENABLE USING "ontop_debug"
     
