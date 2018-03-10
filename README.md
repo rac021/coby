@@ -23,7 +23,7 @@
 
    `  ./01_coby_standard_builder.sh `
     
-  - to install libs, just run the command : 
+  - to **install libs**, just run the command : 
    
    `  ./coby_standard_bin/pipeline/scripts/00_install_libs.sh `
    
@@ -47,7 +47,7 @@
    
 #####  Coby standard_build Example :
 
--  Make sure Copy "SI" + "orchestrators" to the coby_standard_bin directory ( created by the previous script )
+-  Make sure Copy **"SI"** + **"orchestrators"** to the **coby_standard_bin directory** ( created by the previous script )
 
    `   cp -r src/SI/ coby_standard_bin/pipeline/ `
    
