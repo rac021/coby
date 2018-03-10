@@ -291,7 +291,7 @@
  ## Delete The default WhichSI var ##
  ####################################
 
- GET_SI="scripts/conf/SELECTED_SI_INFO"
+ GET_SI="conf/SELECTED_SI_INFO"
  rm $GET_SI
 
 
