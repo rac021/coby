@@ -11,11 +11,35 @@
 
 ----------------------------------------------------------------------------------
 
-### 1. Coby standard_build :
+## 1. Coby standard_build : 4 Options.
+
+### if you want to :
+
+##### 1.1 Consult help Install : 
+
+ ` ./01_coby_standard_builder.sh help `
+ 
+##### 1.2 Generate the Only Coby Package ( without downloading and compiling the java projects )
 
    `  ./01_coby_standard_builder.sh `
+    
+  - to install libs, just run the command : 
    
    `  ./coby_standard_bin/pipeline/scripts/00_install_libs.sh `
+   
+
+##### 1.3 install only coby
+
+   `  ./01_coby_standard_builder.sh -i coby `
+
+
+##### 1.4 install only jaxy  ( secured service web )
+
+   `  ./01_coby_standard_builder.sh -i jaxy  `
+   
+##### 1.4 install  both coby & jaxy 
+
+   `  ./01_coby_standard_builder.sh -i coby jaxy  `
     
       
  <p><a href="https://www.youtube.com/embed/l08JIPcqgrI" rel="nofollow"><img src="https://user-images.githubusercontent.com/7684497/36728847-7668397a-1bc2-11e8-9050-27858bb3b343.png" alt="Intro" data-canonical-src="https://i.ytimg.com/vi/20KVZ0ZnCl4/mqdefault.jpg" style="max-width:10%;"></a></p>
