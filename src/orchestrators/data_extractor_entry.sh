@@ -145,6 +145,13 @@
         SI_PATH="../SI" ;
     fi
 
+    if [ ! -d "$SI_PATHS" ]; then 
+      echo  
+      echo -e "\e[93m ERROR ### \e[32m "
+      echo -e "\e[93m  =>> Missning Modelization. No [$SI_PATH] Folder Provided ### \e[32m "
+      EXIT
+    fi
+    
     FILE_BINDER="$SI_PATH/SI.txt"
         
     # Port 
