@@ -31,7 +31,8 @@ fi
  SCRIPTS_PATH_DESTINATION="$COBY_BINARY/scripts"
 
  rm    -rf $COBY_BINARY_ROOT
-
+ mkdir  $COBY_BINARY_ROOT
+ 
  if [ $# == 0 ] ; then 
 
    mkdir -p  $COBY_BINARY  
@@ -56,6 +57,10 @@ fi
    cp -rf $SCRIPTS_PATH_SOURCE $SCRIPTS_PATH_DESTINATION
 
    echo -e "\e[90m Copied. Done. \e[32m "
+   echo
+   echo -e "\e[95m ################################################################################## \e[32m "
+   echo -e "\e[95m ###  Coby Package successfully Deployed in the DIRECTORY  -->  $COBY_BINARY_ROOT   \e[32m "  
+   echo -e "\e[95m ################################################################################## \e[32m "
    echo
    echo " Next Step :  Install libs "
    echo " Command : ./$SCRIPTS_PATH_DESTINATION/00_install_libs.sh help "
@@ -146,7 +151,7 @@ fi
    cp -a $JAVA_PROJECT_JAXY_API/. $TMP_COMPILATION_FOLDER/ 
    cd  $TMP_COMPILATION_FOLDER/ && mvn clean install &&  cd  $CURRENT_PATH
    rm -rf $TMP_COMPILATION_FOLDER/{,.[!.],..?}*
-
+   echo
 
    tput setaf 2
    echo 
@@ -163,7 +168,7 @@ fi
    cp -a $JAVA_PROJECT_JAXY_SECURITY/. $TMP_COMPILATION_FOLDER/ 
    cd  $TMP_COMPILATION_FOLDER/ && mvn clean install &&  cd  $CURRENT_PATH
    rm -rf $TMP_COMPILATION_FOLDER/{,.[!.],..?}*
-
+   echo
    tput setaf 2
    echo 
    echo " ############################                         "
@@ -179,7 +184,7 @@ fi
    cp -a $JAVA_PROJECT_JAXY_DISCOVERY/. $TMP_COMPILATION_FOLDER/ 
    cd  $TMP_COMPILATION_FOLDER/ && mvn clean install && cd $CURRENT_PATH
    rm -rf $TMP_COMPILATION_FOLDER/{,.[!.],..?}*
-
+   echo 
    tput setaf 2
    echo 
    echo " ############################                         "
@@ -201,7 +206,7 @@ fi
    cp $JAVA_PROJECT_JAXY_COBY/coby_config.properties $JAXY_SERVER_PATH
    cp $JAVA_PROJECT_JAXY_COBY/serviceConf.yaml       $JAXY_SERVER_PATH
    cp $JAVA_PROJECT_JAXY_COBY/run_server.sh          $JAXY_SERVER_PATH
- 
+   echo 
    rm -rf $TMP_COMPILATION_FOLDER/{,.[!.],..?}*
  
    tput setaf 2
@@ -223,22 +228,25 @@ fi
    rm -rf $TMP_COMPILATION_FOLDER/{,.[!.],..?}*
 
    rm -rf $TMP_COMPILATION_FOLDER
-
+   echo 
  fi
   
- if [ "$#" != 0 ] ; then  
- 
+ if [ "$#" != 0 ] ; then   
+     
+     echo -e "\e[95m ####################################################################################### \e[32m "
+     echo -e "\e[95m ###  Coby successfully INSTALLED & Deployed in the DIRECTORY  -->  $COBY_BINARY_ROOT    \e[32m "  
+     echo -e "\e[95m ####################################################################################### \e[32m "
+     
      tput setaf 2
      echo 
-     echo 
-     echo " ###  Before you start using COBY, be sure to provide your 'ORCHESTRATORS' and 'SI' folders ### "
+     echo " Before you start using COBY, be sure to provide your 'ORCHESTRATORS' and 'SI' folders "
      echo
-     echo " ###  Example of 'ORCHESTRATORS' ( use_cases ) & 'SI' ( modelizations ) : ###      "
-     echo "       --> SI            :  cp -r src/SI/ coby_standard_bin/pipeline/              "   
-     echo "       --> ORCHESTRATORS :  cp -r src/orchestrators/ coby_standard_bin/pipeline/   "
+     echo "   =>>  Example of 'ORCHESTRATORS' ( use_cases ) & 'SI' ( modelizations ) : ###      "
+     echo "         --> SI            :  cp -r src/SI/ coby_standard_bin/pipeline/              "   
+     echo "         --> ORCHESTRATORS :  cp -r src/orchestrators/ coby_standard_bin/pipeline/   "
      echo 
-     echo " ###  Example of Running The 'synthesis_extractor' ORCHESTRATORS :  ###            "
-     echo "       --> ./coby_standard_bin/pipeline/orchestrators/synthesis_extractor_entry.sh " 
+     echo "   =>>  Example of Running The 'synthesis_extractor' ORCHESTRATORS :  ###            "
+     echo "         --> ./coby_standard_bin/pipeline/orchestrators/synthesis_extractor_entry.sh " 
      sleep 1
      tput setaf 7
  fi
