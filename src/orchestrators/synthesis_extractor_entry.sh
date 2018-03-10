@@ -161,6 +161,13 @@
     #####################################################
     #####################################################
      
+    if [ ! -d "$SI_PATHS" ]; then 
+      echo  
+      echo -e "\e[93m ERROR ### \e[32m "
+      echo -e "\e[93m  =>> Missning SI Modelization. No [$SI_PATHS] Folder Provided ### \e[32m "
+      EXIT
+    fi
+    
     SI=${1:-""}
    
     if [ -z "$SI" ] ; then
