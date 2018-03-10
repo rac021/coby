@@ -71,7 +71,7 @@
     ONTOP_XMS="15g"
     ONTOP_XMX="15g"
     ONTOP_MERGE="" # For Merge : "merge" 
-    ONTOP_LOG_LEVEL="ALL" # OFF
+    ONTOP_LOG_LEVEL="ALL" # OFF , DEBUG , INFO , TRACE , WARN , ERROR  ; 
       
     CORESE_IGNORE_BREAK_LINE="corese_ignore_line_break" # Empty to disable     
     
