@@ -25,6 +25,8 @@
  COBY_SOURCES="src"
  COBY_CORE="$COBY_SOURCES/core"
 
+ COBY_IMAGE_NAME="coby" 
+ 
  COBY_BINARY_ROOT="coby_bin"
  COBY_BINARY="$COBY_BINARY_ROOT/pipeline"
  COBY_LIBS="$COBY_BINARY/libs"
@@ -299,9 +301,35 @@
  rm -rf $MAVEN_REPO_PATH
 
  # BUILD DOCKER IMAGE 
- docker build --no-cache -t coby . 
+ docker build --no-cache -t $COBY_IMAGE_NAME . 
+
+ rm -rf $COBY_BINARY_ROOT
+ 
+ tput setaf 2
+ echo 
  echo
+ echo " COBY DOCKER IMAGE BUILT. Image Name : [$COBY_IMAGE_NAME] "
+ echo
+ echo "  --> Coby ROOT Location ( in the image ) : /opt/coby     "
+ echo "    + Coby pipeline    Location : /opt/coby/pipeline      "
+ echo "    + Coby jaxy-server location : /opt/coby/jax-y_server  "
+ echo "    + Coby jaxy-client location : /opt/coby/jax-y_client  "
+ echo
+ echo " Before starting a COBY container, be sure to provide your 'ORCHESTRATORS' and 'SI' folders "
+ echo
+ echo " Ex : "
+ echo
+ echo "   docker run -it --net host                                                 \\"
+ echo "              --memory-swappiness=0                                          \\"
+ echo "              --ulimit nproc=20000:50000                                     \\"
+ echo "              -v `pwd`/src/orchestrators/.:/opt/coby/pipeline/orchestrators  \\"
+ echo "              -v `pwd`/src/SI:/opt/coby/pipeline/SI $COBY_IMAGE_NAME         \\"
+ echo "              /opt/coby/pipeline/orchestrators/synthesis_extractor_entry.sh    "
+ echo          
+ sleep 1
+ tput setaf 7
+ echo    
  echo "Done !"
+ 
  echo
  
-
