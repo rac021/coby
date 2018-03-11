@@ -308,12 +308,14 @@
  tput setaf 2
  echo 
  echo
- echo " COBY DOCKER IMAGE BUILT. Image Name : [$COBY_IMAGE_NAME] "
+ echo " COBY DOCKER IMAGE BUILT. Image Name : [$COBY_IMAGE_NAME]   "
  echo
- echo "  --> Coby ROOT Location ( in the image ) : /opt/coby     "
- echo "    + Coby pipeline    Location : /opt/coby/pipeline      "
- echo "    + Coby jaxy-server location : /opt/coby/jax-y_server  "
- echo "    + Coby jaxy-client location : /opt/coby/jax-y_client  "
+ echo "  --> Coby SOURCE Location ( in the image ) : /opt/src-coby "
+ echo
+ echo "  --> Coby BINARY Location ( in the image ) : /opt/coby     "
+ echo "    + Coby pipeline    Location : /opt/coby/pipeline        "
+ echo "    + Coby jaxy-server location : /opt/coby/jax-y_server    "
+ echo "    + Coby jaxy-client location : /opt/coby/jax-y_client    "
  echo
  echo " Before starting a COBY container, be sure to provide your 'ORCHESTRATORS' and 'SI' folders "
  echo
