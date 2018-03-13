@@ -87,7 +87,7 @@
                 echo 
                 echo "   input=                     :  Folder containing Modelization ( graphs )                                            "
                 echo "   output=                    :  Output Mapping FOlder                                                                "
-                echo "   ext=                       :  Extension of Graphs                                                                  "
+                echo "   ext=                       :  Extension of Graphs. Ex : ext=.graphml                                               "
                 echo "   class=                     :  Discriminator class                                                                  "
                 echo "   column=                    :  Discriminator Column                                                                 "
                 echo "   prefixFile=                :  Prefix File Path                                                                     "
