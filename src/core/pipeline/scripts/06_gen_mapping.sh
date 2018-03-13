@@ -244,6 +244,13 @@
   fi
   echo
   
+  if [ -z "$PREFIX_FILE" ] ; then   
+  echo -e " ##  PREFIX_FILE   : ---                         "
+  else 
+  echo -e " ##  PREFIX_FILE   : $PREFIX_FILE                "
+  fi
+  echo
+  
   echo -e " ##  DEF_PREFIX    : $DEFAULT_PREFIX             "
   echo -e " ##  PRED_PAT_CNTX : $PREDICATE_PATTERN_CONTEXT  "
   echo
