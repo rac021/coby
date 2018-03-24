@@ -131,7 +131,7 @@
                     ;; 
                     ("ontop_fragment")        ONTOP_FRAGMENT=$VALUE
                     ;;
-                    ("ontop_log_level")       ONTOP_LOG_LEVEL=$VALUE                   
+                    ("ontop_log_level")       ONTOP_LOG_LEVEL=$VALUE 
                     ;;
                     ("yed_gen_ontop_version") YED_GEN_ONTOP_VERSION=$VALUE
                     
@@ -151,7 +151,7 @@
                     ;;    
                     ("corese_flush_count")    CORESE_FLUSH_COUNT=$VALUE
                     ;;  
-                    ("corese_output_extension") CORESE_OUTPUT_EXTENSION=$VALUE                 
+                    ("corese_output_extension") CORESE_OUTPUT_EXTENSION=$VALUE 
                     ;;
                     ("class_values")            CLASS_VALUES=$VALUE
                     ;;  
@@ -289,7 +289,7 @@
     
     CORESE_IGNORE_LINE_BREAK=${CORESE_IGNORE_LINE_BREAK:-""}
     
-    CORESE_QUERY=${CORESE_QUERY:-"SELECT ?S ?P ?O { ?S ?P ?O . filter( !isBlank(?S) ) . filter( !isBlank(?O) )  } "}    
+    CORESE_QUERY=${CORESE_QUERY:-"SELECT ?S ?P ?O { ?S ?P ?O . filter( !isBlank(?S) ) . filter( !isBlank(?O) )  } "} 
     CORESE_PEEK=${CORESE_PEEK:-"-peek 6 "}
     # Size file = -f
     CORESE_FRAGMENT=${CORESE_FRAGMENT:-"-f 1000000 "}  
@@ -314,7 +314,7 @@
         if [ ! -f $GET_SI ]  ; then
           echo
           echo -e "\e[91m Missing $GET_SI ! \e[39m "
-          echo -e "\e[91m You can use the command [[ ./scripts/01_use_si.sh si=WhichSI ]] to set the var WhichSI ! \e[39m "         
+          echo -e "\e[91m You can use the command [[ ./scripts/01_use_si.sh si=WhichSI ]] to set the var WhichSI ! \e[39m " 
         fi
         
         SI=$(head -1 $GET_SI)        
@@ -423,7 +423,7 @@
                  
             if [ -f $specs/$CLASS_FILE ] ; then
                     
-              LINE_ONE=$(head -n 1 $specs/$CLASS_FILE )                     
+              LINE_ONE=$(head -n 1 $specs/$CLASS_FILE ) 
               LINE_TWO=$(sed -n '2p' $specs/$CLASS_FILE )
                        
               IFS=$'=' read -ra KEY_VALUE <<< "$LINE_ONE" 
@@ -435,14 +435,14 @@
 
             $SCRIPT_PATH/06_gen_mapping.sh input="$INPUT_TEMP_SPEC"                    \
                                            output="$OUTPUT_OBDA/$DEFAULT_MAPPING_NAME" \
-                                           csvFileName="$VALIDE_CSV_FILE_NAME"         \
+                                           csvFileName="$OUT_VALIDATE_CSV"             \
                                            ext=".$EXTENSION_SPEC"                      \
                                            class="$CLASS_VALUE"                        \
                                            column="$DISCRIMINATOR_COLUMN"              \
                                            connecFileName=$CONNEC_FILE_NAME            \
                                            version=$YED_GEN_ONTOP_VERSION              
 
-            # FOR EACH OBDA MAPPING GENERATED FROM SPEC - obdaMapping in `find $OUTPUT_OBDA/* -type f `
+            # FOR EACH OBDA MAPPING GENERATED FROM SPEC - obdaMapping in `find $OUTPUT_OBDA/* -type f
 
             for obdaMapping in ` find $OUTPUT_OBDA -type f -name "*.$EXTENSION_OBDA" ` ; do
             
@@ -482,7 +482,7 @@
                
                mkdir -p $SI/output/03_corese/shared/$CURRENT_DATE_TIME
                          
-               mv $SI/output/03_corese/*.* $SI/output/03_corese/shared/$CURRENT_DATE_TIME                  
+               mv $SI/output/03_corese/*.* $SI/output/03_corese/shared/$CURRENT_DATE_TIME 
                        
                $SCRIPT_PATH/05_init_si_data.sh "-a" 
                      
@@ -528,7 +528,7 @@
                     
               if [ -f $specs/$CLASS_FILE ] ; then
                     
-                 LINE_ONE=$(head -n 1 $specs/$CLASS_FILE )                     
+                 LINE_ONE=$(head -n 1 $specs/$CLASS_FILE ) 
                  LINE_TWO=$(sed -n '2p' $specs/$CLASS_FILE )
                        
                  IFS=$'=' read -ra KEY_VALUE <<< "$LINE_ONE" 
@@ -547,7 +547,7 @@
                                              connecFileName=$CONNEC_FILE_NAME          \
                                              version=$YED_GEN_ONTOP_VERSION            
 
-              # FOR EACH OBDA MAPPING GENERATED FROM SPEC - obdaMapping in `find $OUTPUT_OBDA/* -type f `                    
+              # FOR EACH OBDA MAPPING GENERATED FROM SPEC - obdaMapping in `find $OUTPUT_OBDA/* -type f `
               
      
               for obdaMapping in ` find $OUTPUT_OBDA -type f -name "*.$EXTENSION_OBDA" ` ; do # -printf "%f\n"
