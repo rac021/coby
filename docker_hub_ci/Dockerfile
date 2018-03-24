@@ -18,7 +18,7 @@
 
  # COPY COBY SOURCES TO : /opt/coby-src
  RUN mkdir /opt/coby-src
- COPY ../. /opt/coby-src
+ ADD ../. /root/project
  RUN chown -R coby:coby /opt/coby-src
  RUN chmod -R 777 /opt/coby-src
  
