@@ -300,8 +300,8 @@
  rm -rf $TMP_COMPILATION_FOLDER
  rm -rf $MAVEN_REPO_PATH
 
- # BUILD DOCKER IMAGE 
- docker build --no-cache -t $COBY_IMAGE_NAME . 
+ # BUILD DOCKER IMAGE
+ docker build --no-cache -t $COBY_IMAGE_NAME -f Dockerfile_Coby . 
 
  rm -rf $COBY_BINARY_ROOT
  
