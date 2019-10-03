@@ -252,7 +252,7 @@
          
                 # MATCHER_VALUE=`echo "$PART_VALUES_SQL" | grep -Po '(?<=(\( )).*(?=\).*{)' `
                  
-                 LEFT_PART_VALUE_SQL=`echo "$_PART_VALUES_SQL" | grep -Po '(?<=(\()).*(?=\).*{)' `
+                 LEFT_PART_VALUE_SQL=`echo "$_PART_VALUES_SQL" | grep -Po '(?<=(\()).*(?=\).{)' `
     
                  RIGHT_PART_VALUE_SQL=` echo "$_PART_VALUES_SQL" | grep -o '{.*}.*$' `
 
